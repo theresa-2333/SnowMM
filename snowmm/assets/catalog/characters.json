@@ -1,0 +1,380 @@
+[
+  {
+    "name": "卜卜-小天师",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Bubu - The Geomancer",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "妮塔-悸响",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Nita - Pulse",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "恩雅-姐姐大人",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Enya - Big Sis",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "瑟瑞斯-悠游",
+    "element": "高热",
+    "role": "buffer",
+    "name_en": "Siris - Freefin",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "瑟瑞斯-瞬刻",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Siris - Ksana",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "肴-冬至",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Yao - Winter Solstice",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "胧嫣-瑞狐",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Longyan - Divine Fox",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芙提雅-小太阳",
+    "element": "高热",
+    "role": "buffer",
+    "name_en": "Fritia - Little Sunshine",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芙提雅-缄默",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Fritia - Hush",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芬妮-澄意",
+    "element": "高热",
+    "role": "dps",
+    "name_en": "Fenny - Pureheart",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "凯茜娅-朝翼",
+    "element": "低温",
+    "role": "dps",
+    "name_en": "Katya - Dawnwing",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "凯茜娅-狂诗",
+    "element": "低温",
+    "role": "dps",
+    "name_en": "Katya - Rhapsody",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "凯茜娅-蓝闪",
+    "element": "低温",
+    "role": "dps",
+    "name_en": "Katya - Blue Bolt",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "安卡希雅-辉夜",
+    "element": "低温",
+    "role": "buffer",
+    "name_en": "Acacia - Kaguya",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "猫汐尔-猫猫",
+    "element": "低温",
+    "role": "dps",
+    "name_en": "Mauxir - Meow",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "猫汐尔-莲驱",
+    "element": "低温",
+    "role": "dps",
+    "name_en": "Mauxir - Lotus",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "肴-养生专家",
+    "element": "低温",
+    "role": "support",
+    "name_en": "Yao - Quiet Quitter",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "苔丝-绮幻",
+    "element": "低温",
+    "role": "buffer",
+    "name_en": "Tess - Phantasia",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "里芙-狂猎",
+    "element": "低温",
+    "role": "dps",
+    "name_en": "Lyfe - Wild Hunt",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "恩雅-羽蜕",
+    "element": "电击",
+    "role": "buffer",
+    "name_en": "Enya - Exuvia",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "米娅-星彩",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Mia - Starchaser",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "肴-夜天光",
+    "element": "电击",
+    "role": "buffer",
+    "name_en": "Yao - Nightglow",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芙提雅-炬芯",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Fritia - Sparkdrive",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芬妮-咎冠",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Fenny - Coronet",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "苔丝-魔术师",
+    "element": "电击",
+    "role": "support",
+    "name_en": "Tess - The Magician",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "薇蒂雅-龙舌兰",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Vidya - Agave",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "辰星-云篆",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Chenxing - Ethereal Cloud",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "辰星-琼弦",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Chenxing - Jade Arc",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "辰星-观测者",
+    "element": "电击",
+    "role": "support",
+    "name_en": "Chenxing - The Observer",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "里芙-星期三",
+    "element": "电击",
+    "role": "dps",
+    "name_en": "Lyfe - Wednesday",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "伊切尔-豹豹",
+    "element": "动能",
+    "role": "support",
+    "name_en": "Eatchel - The Cub",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "克罗瑞娜-绯月",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Clarina - Crimson Moon",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "妮塔-四手",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Nita - Hands",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "安卡希雅-时之重奏",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Acacia - Chrono Echo",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "恩雅-澜风",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Enya - Tempest",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "晴-旧日王牌",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Haru - The Ace",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "晴-藏锋",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Haru - Absconditus",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "瑟瑞斯-小金鱼",
+    "element": "动能",
+    "role": "support",
+    "name_en": "Siris - The Goldfish",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芬妮-辉耀",
+    "element": "动能",
+    "role": "support",
+    "name_en": "Fenny - Starshine",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芬妮-黄金狮子",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Fenny - Lionheart",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "茉莉安-雨燕",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Marian - Swift",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "茉莉安-霄鹰",
+    "element": "动能",
+    "role": "buffer",
+    "name_en": "Marian - Aquila",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "里芙-无限之视",
+    "element": "动能",
+    "role": "dps",
+    "name_en": "Lyfe - Infinite Sight",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "卜卜-灵鉴",
+    "element": "特异",
+    "role": "dps",
+    "name_en": "Bubu - Specular Soul",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "奈莉德-冥河代理人",
+    "element": "特异",
+    "role": "dps",
+    "name_en": "Nerida - Styx Envoy",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "安卡希雅-不予显示",
+    "element": "特异",
+    "role": "support",
+    "name_en": "Acacia - [Redacted]",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "晴-霆光",
+    "element": "特异",
+    "role": "dps",
+    "name_en": "Haru - Raikou",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "猫汐尔-溯影",
+    "element": "特异",
+    "role": "buffer",
+    "name_en": "Mauxir - Shadow Ka",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "琴诺-双面",
+    "element": "特异",
+    "role": "support",
+    "name_en": "Cherno - Those Two",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "琴诺-悖谬",
+    "element": "特异",
+    "role": "dps",
+    "name_en": "Cherno - Enigma",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "芙提雅-驰掣",
+    "element": "特异",
+    "role": "dps",
+    "name_en": "Fritia - Turbo",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "茉莉安-幽潮",
+    "element": "特异",
+    "role": "support",
+    "name_en": "Marian - Riptide",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "茉莉安-绷带小姐",
+    "element": "特异",
+    "role": "dps",
+    "name_en": "Marian - Queen of Pain",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  },
+  {
+    "name": "薇蒂雅-天鹅座",
+    "element": "特异",
+    "role": "buffer",
+    "name_en": "Vidya - Celestial Swan",
+    "name_en_source": "https://gacha-data.com/snowbreak/characters/"
+  }
+]

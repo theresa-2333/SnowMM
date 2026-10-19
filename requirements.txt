@@ -1,0 +1,7 @@
+PySide6>=6.6
+
+# Development extras (see pyproject.toml [project.optional-dependencies]):
+#   pip install -e ".[dev]"   -> adds ruff + pyinstaller
+#
+# Archive import (.zip / .7z / .rar) is parked until its unpacking bugs are
+# fixed, so no py7zr / rarfile dependency is needed right now.

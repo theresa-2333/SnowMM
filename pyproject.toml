@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snowmm"
+version = "1.0.0"
+description = "A modern mod manager for Snowbreak: Containment Zone"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PySide6>=6.6"]
+
+[project.urls]
+Repository = "https://github.com/theresa-2333/Snowbreak_Mod_Manager"
+Issues = "https://github.com/theresa-2333/Snowbreak_Mod_Manager/issues"
+
+[tool.setuptools.packages.find]
+include = ["snowmm*"]
+
+[tool.setuptools.package-data]
+snowmm = ["assets/**/*.png", "assets/**/*.ico", "assets/**/*.json", "assets/**/*.txt"]
+
+[project.optional-dependencies]
+# Archive import (.zip / .7z / .rar) is parked for now; when it returns it will
+# need py7zr / rarfile again - see docs/PLAN.md, roadmap item 1.
+dev = ["ruff>=0.6", "pyinstaller>=6.0", "build>=1.0", "pillow>=10.0"]
+
+[project.scripts]
+snowmm = "snowmm.app:main"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["snow_mod_manager", ".preview", "build", "dist", ".build-deps", ".work", ".release-test"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"snowmm/ui/icons.py" = ["E501"]
+"tests/*" = ["E402"]
+"tools/*" = ["E402"]
