@@ -1,0 +1,2 @@
+recursive-include snowmm/assets *.png *.ico *.json *.txt
+include README.md README_EN.md requirements.txt THIRD_PARTY_NOTICES.md CHANGELOG.md

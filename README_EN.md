@@ -1,100 +1,84 @@
-<img width="1273" height="756" alt="v0 2 2 en img" src="https://github.com/theresa-2333/Snowbreak_Mod_Manager/blob/main/en_img1.png" />
-<img width="1273" height="756" alt="v0 2 2 en img" src="https://github.com/theresa-2333/Snowbreak_Mod_Manager/blob/main/en_img2.png" />
+# SnowMM · Snowbreak Mod Manager
 
+[简体中文](README.md) · [Changelog](CHANGELOG.md) · [Issues](https://github.com/theresa-2333/Snowbreak_Mod_Manager/issues)
 
------
+**v1.0.0** is a major upgrade from 0.2.x: a PySide6 desktop app with character cards,
+package-aware mod management, image previews, and a fully offline asset library.
 
-## Snowbreak Mod Manager
+## Run
 
-### Introduction
+Download `SnowMM-1.0.0-windows-x64.zip` from
+[Releases](https://github.com/theresa-2333/Snowbreak_Mod_Manager/releases).
+Extract the **whole archive**, then run `SnowMM/SnowMM.exe`. Keep its `_internal` folder alongside it.
 
- **Snowbreak Mod Manager** is a powerful and easy-to-use Mod management tool designed specifically for players of **Snowbreak: Containment Zone**. it aims to help players easily manage their game Mods, including installation, enabling, disabling, 和 classification, significantly simplifying the process of using Mods.
+From source (Python 3.10+):
 
-### Key Features
+```powershell
+python -m pip install -r requirements.txt
+python main.py
+```
 
-  * **Centralized Management**: All Mods are managed within one intuitive interface, eliminating the need for manual drag-and-drop and file confusion.
-  * **One-Click Enable/Disable**: Easily check or uncheck a Mod to enable or disable it, without the need for manual file renaming.
-  * **Flexible Classification System**: Organize your Mods by custom classifications (Character → Armor → Costume), making searching and management more efficient.
-  * **Detail Preview**: Add custom names, notes, and preview images for each Mod, allowing you to quickly identify the content and effect of the Mod.
-  * **Smart Path Management**: Automatically manages the storage path of Mod files, keeping your game directory neat and organized.
-  * **Theme Switching**: Supports light and dark themes to accommodate different user preferences.
-  * **Lightweight and Efficient**: Built on Python and PyQt5, it has low resource usage and runs smoothly.
+First launch opens Settings. Select the game's mods directory, usually
+`<game>/Game/Content/Paks/mods`, then scan to adopt existing mods.
+Choose English in Settings; language changes apply immediately.
 
-### How to Use
+![English character overview](docs/screenshots/14-characters-english.png)
 
-1.  **Set the Mod Storage Path**:
+![English character detail](docs/screenshots/15-detail-english.png)
 
-      * Upon first launch, the program will prompt you to set a Mod storage path.
-      * You can modify this path anytime via the "Change..." button on the main interface.
-      * **Important Tip**: This path should be set to the `Game\Content\Paks\~mods` directory under the game's root directory. The program will automatically copy Mods to this path and control enabling/disabling through file renaming.
-      * **Only one Mod can be enabled per skin at a time**. Please note that `_100_P` at the end of the filename is crucial, so do not delete it. If you encounter issues with a Mod not taking effect, check if the Mod filename contains `_100_P` before the file extension.
+## Features
 
-2.  **Add a Mod**:
+- 54 bundled operatives with clean portraits, damage-type filters, favorites, and search.
+  Characters with no mods can still be opened.
+- English character names, exosuit names, damage types, and interface text.
+  Chinese storage keys and folder names stay unchanged, preserving existing collections.
+- Import pak files or whole folders from a character's page. Same-stem utoc, ucas, and sig
+  companions are included automatically; each package receives its own record.
+- Collision handling keeps one shared stem across a package. Toggle, rename, and move
+  operations preflight destinations and attempt rollback on failure.
+- Choose, drop, or paste a preview image. Click an existing image to view it in full,
+  zoom with the wheel, drag to pan, select 100% or Fit, and press Esc to close.
+- Missing files, duplicate records, multiple active mods, and unknown-character checks.
+- Legacy record migration, directory conversion, backups, dark/light themes, and a new app icon.
+- Selection survives refresh; pending notes are saved before selection/language changes or closing.
+  Narrow windows collapse the portrait and secondary columns.
 
-      * Click the "Add New Mod..." button.
-      * Select your Mod file.
-      * In the pop-up window, select or create a primary classification (usually the character name), a secondary classification (usually the armor name), and a tertiary classification (usually the costume name) for your Mod.
-      * You can also set the Mod name, notes, and preview image in the same dialog.
-      * Click "OK." The Mod file will be copied to your set storage path and will appear in the management list.
+Shortcuts: F5 refreshes, Ctrl+F focuses search, and Ctrl+V pastes an image into the inspector.
 
-3.  **Manage Mods**:
+## Storage and upgrades
 
-      * Click the Mod you wish to manage in the tree view on the left.
-      * The panel on the right will display the Mod's detailed information.
-      * You can modify the Mod name and notes.
-      * Click "Change Image" to add or modify the Mod's preview image.
-      * It is recommended to enable or disable it through the main interface's "Enable Selected Mod" and "Disable Selected Mod" options.
-      * Click "Save Changes" to save your modifications.
+Files are stored under `<mods>/<Chinese character-exosuit>/`.
+Enabled files retain their extensions; disabled files receive `.disabled`.
+Companion files are toggled together. `_100_P` is optional, and existing suffixes are preserved.
+Archive import (`.zip/.7z/.rar`) remains disabled; extract the archive and import its folder.
 
-4.  **Delete a Mod**:
+User data lives in `%APPDATA%/SnowMM/`: settings, database, previews, and backups.
+Keep this directory when upgrading. The app can migrate `~/.snowbreak_mod_manager/projects.json`
+and convert the old character/armor/outfit directory layout while updating tracked paths.
 
-      * Select the Mod you wish to delete.
-      * Click the "Delete Selected Mod" button.
-      * The program will ask you to confirm the deletion and will permanently delete the Mod file from the storage path.
+## Development and release builds
 
-### Dependencies and Installation
+```powershell
+python -m unittest discover -s tests -t .   # 57 core/resource checks
+python tests/smoke_ui.py
+python tests/regression_ui.py
+python -m ruff check .
+python -m pip install -e ".[dev]"
+pwsh -NoProfile -File tools/build_exe.ps1
+python tools/package_release.py
+```
 
-  * **General Users**: Directly install and use the latest program from the Releases section.
+Release tooling creates portable Windows, source, and resource archives with SHA-256 hashes.
+See [release instructions](docs/RELEASE.md). The old 0.2.x app remains under `snow_mod_manager/`.
 
-  * **Developers**:
-    This tool requires Python 3 and the PyQt5 library.
+## Credits
 
-    ```bash
-    # Install dependencies
-    pip install PyQt5
+Portraits: [GameKee](https://www.gamekee.com/snow/second/61949), with Sparkdrive artwork from
+[BWIKI](https://wiki.biligame.com/sonw/芙提雅·炬芯).
+English names: [Snowbreak Wiki](https://snowbreak.fandom.com/wiki/Characters) and
+[GachaData](https://gacha-data.com/snowbreak/characters/).
+Individual image URLs and digests are recorded in `snowmm/assets/catalog/artwork.json`.
+Interface inspiration: [JASM](https://github.com/Kiyanami/JASM).
 
-    # Run the program
-    python mod_manager_v0.2.2.py
-    ```
-
-### Future Plans
-
-We welcome any feedback, suggestions, and contributions from the community. Please submit issues or create pull requests through our GitHub project page.
-
-
-### Update Log
-**Version 0.2.2**
-
-  * Added conflict warning: the UI now shows a notice if multiple mods are enabled for the same costume.
-  * Added search function (supports searching within 3rd-level categories and below).
-  * Added 3-level classification (Character → Armor → Costume) and grid navigation (click a costume to show mods).
-  * Updated UI styling.
-  * Added support for setting mod name/description/image during the add-mod flow.
-  
-
------
-**Version 0.2**
-
-  * Added custom Mod storage path functionality.
-  * Added theme switching functionality (Light/Dark).
-  * Fixed known bugs and improved stability.
-
------
-
-**Version 0.2.1**
-
-  * Added English support
-
-This is an open-source project. Stars and Forks are welcome\!
-
------
+This is an unofficial tool. Game artwork and trademarks belong to their respective owners.
+See [third-party notices](THIRD_PARTY_NOTICES.md).

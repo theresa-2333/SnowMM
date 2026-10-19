@@ -1,96 +1,116 @@
-## Snowbreak Mod Manager
+# SnowMM · 尘白禁区 Mod 管理器
 
-<img width="1271" height="747" alt="v0 2 2 zh img" src="https://github.com/theresa-2333/Snowbreak_Mod_Manager/blob/main/zh_img1.png" />
-<img width="1271" height="747" alt="v0 2 2 zh img" src="https://github.com/theresa-2333/Snowbreak_Mod_Manager/blob/main/zh_img2.png" />
+[English](README_EN.md) · [更新记录](CHANGELOG.md) · [问题反馈](https://github.com/theresa-2333/Snowbreak_Mod_Manager/issues)
 
-[English version](https://github.com/theresa-2333/Snowbreak_Mod_Manager/blob/main/README_EN.md)
+**v1.0.0** 是从 0.2.x 升级的重大版本：采用 PySide6、分层架构与角色卡片界面，
+集中管理模组导入、启停、预览和冲突检查。支持简体中文 / English，全部资源随应用打包，日常使用无需联网。
 
-### 简介
+## 下载与运行
 
-**Snowbreak Mod Manager** 是一个专为《尘白禁区》（Snowbreak: Containment Zone）玩家设计的、功能强大且易于使用的 Mod 管理工具。帮助玩家轻松管理游戏 Mod，包括安装、启用、禁用和分类，从而大大简化 Mod 的使用流程。
+在 [GitHub Releases](https://github.com/theresa-2333/Snowbreak_Mod_Manager/releases) 下载
+`SnowMM-1.0.0-windows-x64.zip`，**完整解压**后运行 `SnowMM/SnowMM.exe`。
+请保留旁边的 `_internal` 文件夹；这是便携应用目录，并非单文件 EXE。
 
-### 主要功能
+从源码运行（Python 3.10 或更新版本）：
 
-  * **集中式管理**：所有 Mod 都在一个直观的界面中进行管理，告别手动拖拽和文件混淆。
-  * **一键启用/禁用**：通过点击按钮，即可实现启用或禁用，无需手动重命名文件。
-  * **灵活的分类系统**：根据角色名-装甲-皮肤等自定义分类来组织你的 Mod，让查找和管理更加高效。
-  * **详情预览**：为每个 Mod 添加自定义名称、备注和预览图片，让你快速识别 Mod 的内容和效果。
-  * **智能路径管理**：自动管理 Mod 文件的存放路径，保持你的游戏目录整洁有序。
-  * **主题切换**：支持浅色和深色主题，适应不同的使用偏好。
-  * **轻量级且高效**：基于 Python 和 PyQt5 构建，占用资源少，运行流畅。
-
-### 使用方法
-
-1.  **设置 Mod 存放路径**：
-
-      * 首次启动时，需要设置一个 Mod 的存放路径。
-      * 你可以通过主界面的“更改...”按钮随时修改此路径。
-      * **重要提示**：此路径应设置为游戏根目录下的Game\Content\Paks\\mods目录，程序会自动将 Mod 复制到此路径下，并通过重命名来控制启用/禁用。
-      * 每个皮肤只可同时启用一个mod，请注意，文件名末尾的“_100_P”至关重要，因此请勿删除。如果遇到mod不生效的问题可以查看mod文件名末尾（.后缀前）是否包含_100_P
-
-2.  **添加 Mod**：
-
-      * 点击“添加新 Mod...”按钮。
-      * 选择你的 Mod 文件。
-      * 在弹出的窗口中，为你的 Mod 选择或创建一个一级分类（通常是角色名）和二级分类（通常是装甲名称）以及三级分类（通常是皮肤名称）。
-      * 设置mod名称，描述，图片。
-      * 点击“确定”，Mod 文件将被复制到你设置的存放路径中，并出现在管理列表中。
-
-3.  **管理 Mod**：
-
-      * 在左侧的树状视图中，点击你想要管理的 Mod。
-      * 右侧面板会显示该 Mod 的详细信息。
-      * 你可以修改 Mod 名称和备注。
-      * 点击“更换图片”来添加或修改 Mod 的预览图片。
-      * 建议通过主界面【启用选中mod】和【禁用选中mod】来启用或禁用它。
-      * 点击“保存更改”来保存你的修改。
-
-4.  **删除 Mod**：
-
-      * 选择你想要删除的 Mod。
-      * 点击“删除选中 Mod”按钮。
-      * 程序会提示你确认删除，并永久删除存放路径中的 Mod 文件。
-
-### 依赖与安装
-普通用户直接安装Releases的最新程序使用
-
-开发者
-此工具需要 Python 3 和 PyQt5 库。
-
-```bash
-# 安装依赖
-pip install PyQt5
-
-# 运行程序
-python mod_manager_v0.2.2.py
+```powershell
+python -m pip install -r requirements.txt
+python main.py
 ```
 
-### 未来计划
+首次运行会打开设置，选择游戏中的模组目录，例如：
 
-我们欢迎社区的任何反馈、建议和贡献。请通过我们的 GitHub 项目页面提交问题或发起合并请求。
+```text
+<游戏目录>/Game/Content/Paks/mods
+```
 
+已有模组可在设置中扫描收录。游戏程序路径为可选项，用于「启动游戏」按钮。
 
-### 更新日志
+## 界面预览
 
+![角色概览](docs/screenshots/01-characters.png)
 
-**版本 0.2.2**
+| 角色详情 | English |
+| --- | --- |
+| ![角色详情](docs/screenshots/02-character-detail.png) | ![English](docs/screenshots/14-characters-english.png) |
 
-  * 新增mod冲突提示，单个皮肤下如果启用了多个mod主界面左上角会有提示。
-  * 新增搜索功能，目前仅支持搜索三级分类及以下的项目。
-  * 新增三级分类（角色 → 装甲 → 服装）并添加网格导航 通过点击三级分类显示网格视图。
-  * 更新ui风格
-  * 支持在添加mod时直接设置信息
------
-**版本 0.2.1**
+## 主要功能
 
-  * 新增英语支持
------
-**版本 0.2**
+- **54 位内置角色**：无中文姓名遮挡的角色图、属性分类、收藏、搜索；没有模组的角色同样可以进入详情页。
+- **完整双语**：角色名称、装甲名、属性名和界面文字跟随语言设置。英文搜索可用；中文磁盘目录与数据库标识保持稳定。
+- **角色页导入**：添加 pak 文件或导入整个文件夹；自动携带同名 utoc / ucas / sig，每组模组分别登记。
+- **成组文件操作**：重名时整组使用统一后缀；启停、移动、改名先检查目标，出错时尝试回滚并显示真实状态。
+- **模组预览**：选择、拖入或粘贴图片；点击已有图片放大，支持滚轮缩放、拖动平移、100% 原图、适应窗口和 Esc 关闭。
+- **检查与维护**：同角色多启、文件缺失、重复记录、名单外归属检查；数据备份、旧版迁移与目录转换。
+- **连续操作**：刷新保留多选，切换模组或关闭窗口前保存待写入备注；窄窗口自动收起立绘和次要表格列。
+- **明暗主题与新标识**：统一的多尺寸 Windows 图标、窗口图标与应用侧栏标识。
 
-  * 新增 Mod 存放路径自定义功能。
-  * 新增主题切换功能（浅色/深色）。
-  * 修复了已知 Bug，提升了稳定性。
+快捷键：`F5` 刷新，`Ctrl+F` 搜索；检查器内可使用 `Ctrl+V` 粘贴剪贴板图片。
 
+## 模组和数据
 
-这是一个开源项目，欢迎 Star 和 Fork！
+模组目录以角色全名作为一级目录：
 
+```text
+mods/
+  凯茜娅-狂诗/
+    My Mod_100_P.pak
+    My Mod_100_P.utoc
+    My Mod_100_P.ucas
+  里芙-狂猎/
+    Another Mod.pak.disabled
+```
+
+启用时使用原扩展名，禁用时添加 `.disabled`；同组配套文件一同处理。
+文件名不强制使用 `_100_P` 后缀，已有后缀在重名处理时会保留。
+压缩包 `.zip/.7z/.rar` **暂不支持**，请先自行解压，再导入文件夹。
+
+用户数据库、设置、预览图与备份位于 `%APPDATA%/SnowMM/`，不会写入程序目录。
+升级时保留这些文件即可。首次运行若检测到 `~/.snowbreak_mod_manager/projects.json` 且新库为空，
+会迁移旧版记录；也可在设置中手动迁移。
+
+旧 `<角色>/<装甲>/<服装>/` 目录可通过设置中的「转换目录结构」摊平，转换会同步已有记录路径。
+英文显示只影响界面，不会把中文文件夹改名。
+
+## 开发与打包
+
+```powershell
+python -m unittest discover -s tests -t .    # 57 项核心与资源检查
+python tests/smoke_ui.py                     # UI 冒烟及语言切换
+python tests/regression_ui.py                # 卡片间距、瞬时弹窗、真实点击、图片查看器
+python -m ruff check .
+
+# 更新界面截图（Windows）
+$env:SNOWMM_OFFSCREEN = "1"
+python tests/screenshots.py
+
+# 构建与制作发布压缩包
+python -m pip install -e ".[dev]"
+pwsh -NoProfile -File tools/build_exe.ps1
+python tools/package_release.py
+```
+
+`tools/package_release.py` 生成 Windows 便携包、源码包、资源包、发布说明和 SHA-256 校验文件。
+可使用 `SnowMM.exe --self-test <报告路径>` 在隔离数据目录中验证打包资源；详见 [发布说明](docs/RELEASE.md)。
+
+## 目录结构
+
+```text
+snowmm/             应用源码；core/ 业务层，ui/ Qt 界面层
+snowmm/assets/      图标、54 张角色图、属性图标及图鉴元数据
+snow_mod_manager/  保留的 0.2.x 旧版与历史截图
+tests/             核心与界面回归测试
+tools/             资源更新、构建和发布脚本
+docs/              界面截图、架构和验收记录
+```
+
+## 图片与名称来源
+
+角色图片来自 [GameKee 尘白禁区图鉴](https://www.gamekee.com/snow/second/61949)，
+炬芯图片补充自 [BWIKI](https://wiki.biligame.com/sonw/芙提雅·炬芯)。英文名称参考
+[英文角色 Wiki](https://snowbreak.fandom.com/wiki/Characters) 与
+[GachaData 英文图鉴](https://gacha-data.com/snowbreak/characters/)。
+每张图片的具体来源、尺寸和校验值记录在 `snowmm/assets/catalog/artwork.json`。
+
+游戏角色、美术及相关商标归原权利人所有；本项目为非官方工具。第三方组件与素材说明见
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。交互设计参考 [JASM](https://github.com/Kiyanami/JASM)。

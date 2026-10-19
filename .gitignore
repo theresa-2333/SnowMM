@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+dist/
+*.spec
+.preview/
+.ruff_cache/
+.smoke-home/
+*.egg-info/
+
+.work/
+.build-deps/
+.release-test/
