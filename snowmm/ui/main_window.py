@@ -82,7 +82,7 @@ class MainWindow(QMainWindow):
         ctx.toast = self.toast_host
         self._create_pages()
         self.refresh_shortcut = QShortcut(QKeySequence("F5"), self)
-        self.refresh_shortcut.activated.connect(self.refresh_all)
+        self.refresh_shortcut.activated.connect(self.repair_and_refresh)
         self.search_shortcut = QShortcut(QKeySequence("Ctrl+F"), self)
         self.search_shortcut.activated.connect(self._focus_search)
         self.apply_theme()
@@ -91,14 +91,19 @@ class MainWindow(QMainWindow):
         if not self.ctx.settings.storage_path:
             self._navigate("settings")
             self.toast_host.show_message(tr("warning_storage_missing_desc"), "warning")
-        elif migrate.legacy_layout_count(self.ctx.settings.storage_dir):
-            # The old character/armor/outfit tree is still on disk; the settings
-            # page converts it in one click.
-            self.toast_host.show_message(tr("settings_flatten_hint"), "warning")
+        elif getattr(self.ctx.manager, "compatibility_errors", []):
+            self.toast_host.show_message(self.ctx.manager.compatibility_errors[0], "warning")
         elif migrate.legacy_available() and not self.ctx.store.mods:
             self.toast_host.show_message(tr("button_migrate"), "info")
 
     # ------------------------------------------------------------------ chrome
+    def open_gallery(self) -> None:
+        page = self.stack.currentWidget()
+        if page not in (self.detail_page, self.mods_page):
+            self._navigate("mods")
+            page = self.mods_page
+        page.show_gallery()
+
     def _build_sidebar(self) -> QWidget:
         sidebar = QWidget()
         sidebar.setObjectName("Sidebar")
@@ -180,7 +185,7 @@ class MainWindow(QMainWindow):
         self.search_box.setMaximumWidth(360)
 
         self.refresh_button = QPushButton(tr("button_refresh"))
-        self.refresh_button.clicked.connect(self.refresh_all)
+        self.refresh_button.clicked.connect(self.repair_and_refresh)
         self.launch_button = QPushButton(tr("button_launch"))
         self.launch_button.setObjectName("Primary")
         self.launch_button.clicked.connect(self.launch_game)
@@ -299,6 +304,12 @@ class MainWindow(QMainWindow):
             page.set_search(text)
 
     # ------------------------------------------------------------------ actions
+    def repair_and_refresh(self) -> None:
+        _changed, errors = self.ctx.manager.repair_legacy_layout(self.ctx.known_characters())
+        if errors:
+            self.toast_host.show_message(errors[0], "warning")
+        self.refresh_all()
+
     def refresh_all(self) -> None:
         self.ctx.manager.refresh_states()
         # The art library can change on disk (or in the settings) at any moment,
@@ -411,12 +422,14 @@ class MainWindow(QMainWindow):
                 self,
                 tr("dialog_import_title"),
                 "",
-                "Mods (*.pak *.utoc *.ucas *.sig);;All files (*.*)",
+                "Mods (*.pak *.utoc *.ucas *.sig *.zip *.7z *.rar);;All files (*.*)",
             )
             sources = [Path(item) for item in files]
         if not sources:
             return
         dialog = ImportDialog(self.ctx, sources, character=character, parent=self)
+        if self.detail_page.character_name == character:
+            dialog.skin_combo.setCurrentIndex(max(0, dialog.skin_combo.findData(self.detail_page.selected_skin)))
         if dialog.exec() != ImportDialog.DialogCode.Accepted:
             return
         values = dialog.values()
@@ -425,7 +438,8 @@ class MainWindow(QMainWindow):
             result = self.ctx.manager.import_paths(
                 sources,
                 character=character,
-                name=values["name"] if len(sources) == 1 and sources[0].is_file() else "",
+                skin=values["skin"],
+                name=values["name"],
                 author=values["author"],
                 source_url=values["source_url"],
                 note=values["note"],

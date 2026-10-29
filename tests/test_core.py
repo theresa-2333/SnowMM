@@ -16,6 +16,7 @@ from snowmm.core import migrate, paths  # noqa: E402
 from snowmm.core.catalog import Catalog, scan_art, slugify  # noqa: E402
 from snowmm.core.manager import ModManager  # noqa: E402
 from snowmm.core.models import Mod, human_size, unique_in_order  # noqa: E402
+from snowmm.core.naming import folder_for
 from snowmm.core.settings import Settings  # noqa: E402
 from snowmm.core.store import Store  # noqa: E402
 
@@ -80,7 +81,7 @@ class ManagerTests(TempCase):
         self.assertEqual(len(result.added), 1)
         mod = result.added[0]
         self.assertTrue(Path(mod.file).exists())
-        self.assertEqual(Path(mod.file).parent, self.mods_dir / "里芙-狂猎")
+        self.assertEqual(Path(mod.file).parent, self.mods_dir / "lyfe-wild-hunt")
 
         self.manager.refresh_states()
         self.assertTrue(mod.enabled)
@@ -141,7 +142,7 @@ class ManagerTests(TempCase):
     def test_failed_import_leaves_no_empty_folder_behind(self) -> None:
         archive = self.tmp / "pack.zip"
         with zipfile.ZipFile(archive, "w") as handle:
-            handle.writestr("x_100_P.pak", "payload")
+            handle.writestr("readme.txt", "payload")
         result = self.manager.import_paths([archive], character="里芙-狂猎")
         self.assertEqual(result.added, [])
         self.assertFalse((self.mods_dir / "里芙-狂猎").exists())
@@ -181,7 +182,7 @@ class ManagerTests(TempCase):
         mod = self.manager.import_paths([source], character="肴-夜天光").added[0]
         error = self.manager.move_mod(mod, "肴-冬至")
         self.assertIsNone(error)
-        self.assertTrue((self.mods_dir / "肴-冬至" / "move_100_P.pak").exists())
+        self.assertTrue((self.mods_dir / folder_for("肴-冬至") / "move_100_P.pak").exists())
         self.assertEqual(mod.character, "肴-冬至")
         self.assertEqual(mod.armor_name, "冬至")
         self.assertFalse((self.mods_dir / "肴-夜天光").exists())
@@ -193,7 +194,7 @@ class ManagerTests(TempCase):
         self.manager.set_enabled([mod], False)
         error = self.manager.rename_stem(mod, "NewName_100_P")
         self.assertIsNone(error)
-        directory = self.mods_dir / "恩雅-羽蜕"
+        directory = self.mods_dir / folder_for("恩雅-羽蜕")
         self.assertTrue((directory / "NewName_100_P.pak.disabled").exists(), list(directory.iterdir()))
         self.assertEqual(mod.filename, "NewName_100_P.pak")
 
@@ -221,7 +222,7 @@ class ManagerTests(TempCase):
         reloaded = Store(self.store.path).load()
         self.assertEqual(len(reloaded.mods), 1)
         self.assertEqual(reloaded.mods[0].character, "辰星-紫贝")
-        self.assertEqual(json.loads(self.store.path.read_text(encoding="utf-8"))["schema"], 3)
+        self.assertEqual(json.loads(self.store.path.read_text(encoding="utf-8"))["schema"], 4)
 
     def test_corrupt_store_is_backed_up(self) -> None:
         self.store.path.write_text("{ not json", encoding="utf-8")
@@ -231,15 +232,18 @@ class ManagerTests(TempCase):
 
 
 class ArchiveImportTests(TempCase):
-    def test_archives_are_refused_until_support_returns(self) -> None:
+    def test_zip_import_accepts_unicode_and_converts_storage_names(self) -> None:
         archive = self.tmp / "pack.zip"
         with zipfile.ZipFile(archive, "w") as handle:
             handle.writestr("皮肤/模型_100_P.pak", "payload")
         result = self.manager.import_paths([archive], character="测试角色-装甲")
-        self.assertEqual(result.added, [])
-        self.assertEqual(len(result.errors), 1)
-        self.assertIn(".zip", result.errors[0])
-        self.assertFalse((self.mods_dir / "测试角色-装甲").exists())
+        self.assertEqual(result.errors, [])
+        self.assertEqual(len(result.added), 1)
+        mod = result.added[0]
+        self.assertTrue(mod.filename.isascii())
+        self.assertTrue(mod.directory.name.isascii())
+        self.assertTrue(mod.filename.endswith("_100_P.pak"))
+        self.assertEqual(mod.disk_path.read_text(), "payload")
 
     def test_folder_import_copies_nested_files(self) -> None:
         folder = self.tmp / "bundle"
@@ -247,7 +251,7 @@ class ArchiveImportTests(TempCase):
         (folder / "sub" / "inner_100_P.pak").write_text("pak", encoding="utf-8")
         result = self.manager.import_paths([folder], character="安卡希雅-辉夜")
         self.assertEqual(len(result.added), 1)
-        self.assertTrue((self.mods_dir / "安卡希雅-辉夜" / "inner_100_P.pak").exists())
+        self.assertTrue((self.mods_dir / folder_for("安卡希雅-辉夜") / "inner_100_P.pak").exists())
 
     def test_duplicate_names_keep_the_mount_suffix(self) -> None:
         first = self.tmp / "same_100_P.pak"
@@ -261,7 +265,7 @@ class ArchiveImportTests(TempCase):
         names = sorted(item.name for item in (self.mods_dir / "A-B").iterdir())
         self.assertEqual(names, ["same (2)_100_P.pak", "same_100_P.pak"])
 
-    def test_7z_archive_is_refused(self) -> None:
+    def test_invalid_7z_archive_reports_error(self) -> None:
         archive = self.tmp / "pack.7z"
         archive.write_bytes(b"7z")
         result = self.manager.import_paths([archive], character="凯茜娅-狂诗")
@@ -549,14 +553,14 @@ class ArtLibraryTests(unittest.TestCase):
     def test_roster_is_the_fixed_54_and_records_never_grow_it(self) -> None:
         # The bundled art library is the single source of truth; a stored record
         # may annotate an existing entry but can never invent a character.
-        self.assertEqual(len(Catalog.load([])), 54)
+        self.assertEqual(len(Catalog.load([])), 56)
         stored = Catalog.load(
             [
                 {"name": "凯茜娅-狂诗", "name_en": "Katya (edited)"},
                 {"name": "Not A Character", "element": "高热"},
             ]
         )
-        self.assertEqual(len(stored), 54)
+        self.assertEqual(len(stored), 56)
         self.assertNotIn("Not A Character", stored.names())
         self.assertEqual(stored.get("凯茜娅-狂诗").name_en, "Katya (edited)")
 

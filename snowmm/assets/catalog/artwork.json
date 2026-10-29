@@ -4,7 +4,7 @@
   "portraits": [
     {
       "name": "伊切尔-豹豹",
-      "file": "characters/动能/伊切尔-豹豹.png",
+      "file": "characters/kinetic/eatchel-the-cub.png",
       "source_page": "https://www.gamekee.com/snow/623751.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/91154.png",
       "width": 200,
@@ -13,7 +13,7 @@
     },
     {
       "name": "克罗瑞娜-绯月",
-      "file": "characters/动能/克罗瑞娜-绯月.png",
+      "file": "characters/kinetic/clarina-crimson-moon.png",
       "source_page": "https://www.gamekee.com/snow/674181.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/18/527601.png",
       "width": 200,
@@ -22,7 +22,7 @@
     },
     {
       "name": "凯茜娅-朝翼",
-      "file": "characters/低温/凯茜娅-朝翼.png",
+      "file": "characters/frost/katya-dawnwing.png",
       "source_page": "https://www.gamekee.com/snow/635265.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/120741.png",
       "width": 200,
@@ -31,7 +31,7 @@
     },
     {
       "name": "凯茜娅-狂诗",
-      "file": "characters/低温/凯茜娅-狂诗.png",
+      "file": "characters/frost/katya-rhapsody.png",
       "source_page": "https://www.gamekee.com/snow/668117.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/75400.png",
       "width": 200,
@@ -40,7 +40,7 @@
     },
     {
       "name": "凯茜娅-蓝闪",
-      "file": "characters/低温/凯茜娅-蓝闪.png",
+      "file": "characters/frost/katya-blue-bolt.png",
       "source_page": "https://www.gamekee.com/snow/623752.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/303011.png",
       "width": 200,
@@ -49,7 +49,7 @@
     },
     {
       "name": "卜卜-小天师",
-      "file": "characters/高热/卜卜-小天师.png",
+      "file": "characters/thermal/bubu-the-geomancer.png",
       "source_page": "https://www.gamekee.com/snow/643413.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/675433.png",
       "width": 200,
@@ -58,7 +58,7 @@
     },
     {
       "name": "卜卜-灵鉴",
-      "file": "characters/特异/卜卜-灵鉴.png",
+      "file": "characters/chaos/bubu-specular-soul.png",
       "source_page": "https://www.gamekee.com/snow/689390.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/11/19/665371.png",
       "width": 200,
@@ -67,7 +67,7 @@
     },
     {
       "name": "奈莉德-冥河代理人",
-      "file": "characters/特异/奈莉德-冥河代理人.png",
+      "file": "characters/chaos/nerida-styx-envoy.png",
       "source_page": "https://www.gamekee.com/snow/654763.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/460856.png",
       "width": 200,
@@ -76,7 +76,7 @@
     },
     {
       "name": "妮塔-四手",
-      "file": "characters/动能/妮塔-四手.png",
+      "file": "characters/kinetic/nita-hands.png",
       "source_page": "https://www.gamekee.com/snow/623773.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/135571.png",
       "width": 200,
@@ -85,7 +85,7 @@
     },
     {
       "name": "妮塔-悸响",
-      "file": "characters/高热/妮塔-悸响.png",
+      "file": "characters/thermal/nita-pulse.png",
       "source_page": "https://www.gamekee.com/snow/654761.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/755019.png",
       "width": 200,
@@ -94,7 +94,7 @@
     },
     {
       "name": "安卡希雅-不予显示",
-      "file": "characters/特异/安卡希雅-不予显示.png",
+      "file": "characters/chaos/acacia-redacted.png",
       "source_page": "https://www.gamekee.com/snow/623446.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/242447.png",
       "width": 200,
@@ -103,7 +103,7 @@
     },
     {
       "name": "安卡希雅-时之重奏",
-      "file": "characters/动能/安卡希雅-时之重奏.png",
+      "file": "characters/kinetic/acacia-chrono-echo.png",
       "source_page": "https://www.gamekee.com/snow/691716.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2026/0/29/352972.png",
       "width": 200,
@@ -112,7 +112,7 @@
     },
     {
       "name": "安卡希雅-辉夜",
-      "file": "characters/低温/安卡希雅-辉夜.png",
+      "file": "characters/frost/acacia-kaguya.png",
       "source_page": "https://www.gamekee.com/snow/623750.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/887184.png",
       "width": 200,
@@ -121,7 +121,7 @@
     },
     {
       "name": "恩雅-姐姐大人",
-      "file": "characters/高热/恩雅-姐姐大人.png",
+      "file": "characters/thermal/enya-big-sis.png",
       "source_page": "https://www.gamekee.com/snow/623775.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/975629.png",
       "width": 200,
@@ -130,7 +130,7 @@
     },
     {
       "name": "恩雅-澜风",
-      "file": "characters/动能/恩雅-澜风.png",
+      "file": "characters/kinetic/enya-tempest.png",
       "source_page": "https://www.gamekee.com/snow/649514.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/852325.png",
       "width": 200,
@@ -139,7 +139,7 @@
     },
     {
       "name": "恩雅-羽蜕",
-      "file": "characters/电击/恩雅-羽蜕.png",
+      "file": "characters/electrical/enya-exuvia.png",
       "source_page": "https://www.gamekee.com/snow/623755.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/406473.png",
       "width": 200,
@@ -148,7 +148,7 @@
     },
     {
       "name": "晴-旧日王牌",
-      "file": "characters/动能/晴-旧日王牌.png",
+      "file": "characters/kinetic/haru-the-ace.png",
       "source_page": "https://www.gamekee.com/snow/623776.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/830322.png",
       "width": 200,
@@ -157,7 +157,7 @@
     },
     {
       "name": "晴-藏锋",
-      "file": "characters/动能/晴-藏锋.png",
+      "file": "characters/kinetic/haru-absconditus.png",
       "source_page": "https://www.gamekee.com/snow/623756.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/338096.png",
       "width": 200,
@@ -166,7 +166,7 @@
     },
     {
       "name": "晴-霆光",
-      "file": "characters/特异/晴-霆光.png",
+      "file": "characters/chaos/haru-raikou.png",
       "source_page": "https://www.gamekee.com/snow/689395.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/11/19/145925.png",
       "width": 200,
@@ -175,7 +175,7 @@
     },
     {
       "name": "猫汐尔-溯影",
-      "file": "characters/特异/猫汐尔-溯影.png",
+      "file": "characters/chaos/mauxir-shadow-ka.png",
       "source_page": "https://www.gamekee.com/snow/623754.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/625839.png",
       "width": 200,
@@ -184,7 +184,7 @@
     },
     {
       "name": "猫汐尔-猫猫",
-      "file": "characters/低温/猫汐尔-猫猫.png",
+      "file": "characters/frost/mauxir-meow.png",
       "source_page": "https://www.gamekee.com/snow/623778.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/551948.png",
       "width": 200,
@@ -193,7 +193,7 @@
     },
     {
       "name": "猫汐尔-莲驱",
-      "file": "characters/低温/猫汐尔-莲驱.png",
+      "file": "characters/frost/mauxir-lotus.png",
       "source_page": "https://www.gamekee.com/snow/689406.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2026/0/12/896422.png",
       "width": 200,
@@ -202,7 +202,7 @@
     },
     {
       "name": "琴诺-双面",
-      "file": "characters/特异/琴诺-双面.png",
+      "file": "characters/chaos/cherno-those-two.png",
       "source_page": "https://www.gamekee.com/snow/623777.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/938313.png",
       "width": 200,
@@ -211,7 +211,7 @@
     },
     {
       "name": "琴诺-悖谬",
-      "file": "characters/特异/琴诺-悖谬.png",
+      "file": "characters/chaos/cherno-enigma.png",
       "source_page": "https://www.gamekee.com/snow/623758.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/263460.png",
       "width": 200,
@@ -220,7 +220,7 @@
     },
     {
       "name": "瑟瑞斯-小金鱼",
-      "file": "characters/动能/瑟瑞斯-小金鱼.png",
+      "file": "characters/kinetic/siris-the-goldfish.png",
       "source_page": "https://www.gamekee.com/snow/623780.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/644984.png",
       "width": 200,
@@ -229,7 +229,7 @@
     },
     {
       "name": "瑟瑞斯-悠游",
-      "file": "characters/高热/瑟瑞斯-悠游.png",
+      "file": "characters/thermal/siris-freefin.png",
       "source_page": "https://www.gamekee.com/snow/677329.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_199/h_260/1220/157597/2025/8/15/131572.png",
       "width": 199,
@@ -238,7 +238,7 @@
     },
     {
       "name": "瑟瑞斯-瞬刻",
-      "file": "characters/高热/瑟瑞斯-瞬刻.png",
+      "file": "characters/thermal/siris-ksana.png",
       "source_page": "https://www.gamekee.com/snow/623759.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/18803.png",
       "width": 200,
@@ -247,7 +247,7 @@
     },
     {
       "name": "米娅-星彩",
-      "file": "characters/电击/米娅-星彩.png",
+      "file": "characters/electrical/mia-starchaser.png",
       "source_page": "https://www.gamekee.com/snow/682470.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/10/7/56383.png",
       "width": 200,
@@ -256,7 +256,7 @@
     },
     {
       "name": "肴-养生专家",
-      "file": "characters/低温/肴-养生专家.png",
+      "file": "characters/frost/yao-quiet-quitter.png",
       "source_page": "https://www.gamekee.com/snow/623781.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/973787.png",
       "width": 200,
@@ -265,7 +265,7 @@
     },
     {
       "name": "肴-冬至",
-      "file": "characters/高热/肴-冬至.png",
+      "file": "characters/thermal/yao-winter-solstice.png",
       "source_page": "https://www.gamekee.com/snow/623757.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/258909.png",
       "width": 200,
@@ -274,7 +274,7 @@
     },
     {
       "name": "肴-夜天光",
-      "file": "characters/电击/肴-夜天光.png",
+      "file": "characters/electrical/yao-nightglow.png",
       "source_page": "https://www.gamekee.com/snow/645659.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/395786.png",
       "width": 200,
@@ -283,7 +283,7 @@
     },
     {
       "name": "胧嫣-瑞狐",
-      "file": "characters/高热/胧嫣-瑞狐.png",
+      "file": "characters/thermal/longyan-divine-fox.png",
       "source_page": "https://www.gamekee.com/snow/704410.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/pro/1220/images/w_883/h_690/1220/10427/2026/4/13/380130.png",
       "width": 883,
@@ -292,7 +292,7 @@
     },
     {
       "name": "芙提雅-小太阳",
-      "file": "characters/高热/芙提雅-小太阳.png",
+      "file": "characters/thermal/fritia-little-sunshine.png",
       "source_page": "https://www.gamekee.com/snow/623782.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/79844.png",
       "width": 200,
@@ -301,7 +301,7 @@
     },
     {
       "name": "芙提雅-炬芯",
-      "file": "characters/电击/芙提雅-炬芯.png",
+      "file": "characters/electrical/fritia-sparkdrive.png",
       "source_page": "https://wiki.biligame.com/sonw/芙提雅·炬芯",
       "image_url": "https://patchwiki.biligame.com/images/sonw/3/36/953m3n3883y9o1sjaxh6gdaq0v8q6n0.png",
       "width": 2260,
@@ -310,7 +310,7 @@
     },
     {
       "name": "芙提雅-缄默",
-      "file": "characters/高热/芙提雅-缄默.png",
+      "file": "characters/thermal/fritia-hush.png",
       "source_page": "https://www.gamekee.com/snow/623762.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/105286.png",
       "width": 200,
@@ -319,7 +319,7 @@
     },
     {
       "name": "芙提雅-驰掣",
-      "file": "characters/特异/芙提雅-驰掣.png",
+      "file": "characters/chaos/fritia-turbo.png",
       "source_page": "https://www.gamekee.com/snow/640044.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/55702.png",
       "width": 200,
@@ -328,7 +328,7 @@
     },
     {
       "name": "芬妮-咎冠",
-      "file": "characters/电击/芬妮-咎冠.png",
+      "file": "characters/electrical/fenny-coronet.png",
       "source_page": "https://www.gamekee.com/snow/623761.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/718069.png",
       "width": 200,
@@ -337,7 +337,7 @@
     },
     {
       "name": "芬妮-澄意",
-      "file": "characters/高热/芬妮-澄意.png",
+      "file": "characters/thermal/fenny-pureheart.png",
       "source_page": "https://www.gamekee.com/snow/677328.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_279/h_372/1220/157597/2025/8/28/673207.jpg",
       "width": 279,
@@ -346,7 +346,7 @@
     },
     {
       "name": "芬妮-辉耀",
-      "file": "characters/动能/芬妮-辉耀.png",
+      "file": "characters/kinetic/fenny-starshine.png",
       "source_page": "https://www.gamekee.com/snow/626271.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/341494.png",
       "width": 200,
@@ -355,7 +355,7 @@
     },
     {
       "name": "芬妮-黄金狮子",
-      "file": "characters/动能/芬妮-黄金狮子.png",
+      "file": "characters/kinetic/fenny-lionheart.png",
       "source_page": "https://www.gamekee.com/snow/623783.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/947589.png",
       "width": 200,
@@ -364,7 +364,7 @@
     },
     {
       "name": "苔丝-绮幻",
-      "file": "characters/低温/苔丝-绮幻.png",
+      "file": "characters/frost/tess-phantasia.png",
       "source_page": "https://www.gamekee.com/snow/668118.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/767275.png",
       "width": 200,
@@ -373,7 +373,7 @@
     },
     {
       "name": "苔丝-魔术师",
-      "file": "characters/电击/苔丝-魔术师.png",
+      "file": "characters/electrical/tess-the-magician.png",
       "source_page": "https://www.gamekee.com/snow/623760.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/160427.png",
       "width": 200,
@@ -382,7 +382,7 @@
     },
     {
       "name": "茉莉安-幽潮",
-      "file": "characters/特异/茉莉安-幽潮.png",
+      "file": "characters/chaos/marian-riptide.png",
       "source_page": "https://www.gamekee.com/snow/635267.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/134856.png",
       "width": 200,
@@ -391,7 +391,7 @@
     },
     {
       "name": "茉莉安-绷带小姐",
-      "file": "characters/特异/茉莉安-绷带小姐.png",
+      "file": "characters/chaos/marian-queen-of-pain.png",
       "source_page": "https://www.gamekee.com/snow/623784.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/979776.png",
       "width": 200,
@@ -400,7 +400,7 @@
     },
     {
       "name": "茉莉安-雨燕",
-      "file": "characters/动能/茉莉安-雨燕.png",
+      "file": "characters/kinetic/marian-swift.png",
       "source_page": "https://www.gamekee.com/snow/623764.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/453365.png",
       "width": 200,
@@ -409,7 +409,7 @@
     },
     {
       "name": "茉莉安-霄鹰",
-      "file": "characters/动能/茉莉安-霄鹰.png",
+      "file": "characters/kinetic/marian-aquila.png",
       "source_page": "https://www.gamekee.com/snow/694995.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_680/h_597/1220/10427/2026/2/3/479474.png",
       "width": 680,
@@ -418,7 +418,7 @@
     },
     {
       "name": "薇蒂雅-天鹅座",
-      "file": "characters/特异/薇蒂雅-天鹅座.png",
+      "file": "characters/chaos/vidya-celestial-swan.png",
       "source_page": "https://www.gamekee.com/snow/664169.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/936980.png",
       "width": 200,
@@ -427,7 +427,7 @@
     },
     {
       "name": "薇蒂雅-龙舌兰",
-      "file": "characters/电击/薇蒂雅-龙舌兰.png",
+      "file": "characters/electrical/vidya-agave.png",
       "source_page": "https://www.gamekee.com/snow/632620.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/135994.png",
       "width": 200,
@@ -436,7 +436,7 @@
     },
     {
       "name": "辰星-云篆",
-      "file": "characters/电击/辰星-云篆.png",
+      "file": "characters/electrical/chenxing-ethereal-cloud.png",
       "source_page": "https://www.gamekee.com/snow/623766.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/436454.png",
       "width": 200,
@@ -445,7 +445,7 @@
     },
     {
       "name": "辰星-琼弦",
-      "file": "characters/电击/辰星-琼弦.png",
+      "file": "characters/electrical/chenxing-jade-arc.png",
       "source_page": "https://www.gamekee.com/snow/645658.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/583932.png",
       "width": 200,
@@ -454,7 +454,7 @@
     },
     {
       "name": "辰星-观测者",
-      "file": "characters/电击/辰星-观测者.png",
+      "file": "characters/electrical/chenxing-the-observer.png",
       "source_page": "https://www.gamekee.com/snow/623785.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/360456.png",
       "width": 200,
@@ -463,7 +463,7 @@
     },
     {
       "name": "里芙-无限之视",
-      "file": "characters/动能/里芙-无限之视.png",
+      "file": "characters/kinetic/lyfe-infinite-sight.png",
       "source_page": "https://www.gamekee.com/snow/626270.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/747913.png",
       "width": 200,
@@ -472,7 +472,7 @@
     },
     {
       "name": "里芙-星期三",
-      "file": "characters/电击/里芙-星期三.png",
+      "file": "characters/electrical/lyfe-wednesday.png",
       "source_page": "https://www.gamekee.com/snow/623797.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/923719.png",
       "width": 200,
@@ -481,7 +481,7 @@
     },
     {
       "name": "里芙-狂猎",
-      "file": "characters/低温/里芙-狂猎.png",
+      "file": "characters/frost/lyfe-wild-hunt.png",
       "source_page": "https://www.gamekee.com/snow/623765.html",
       "image_url": "https://cdnimg-v2.gamekee.com/wiki2.0/images/w_200/h_260/1220/157597/2025/7/11/93628.png",
       "width": 200,

@@ -5,21 +5,24 @@ supplied folder).  A mod is therefore "enabled" when its files keep their real
 extension and "disabled" when they are renamed to ``*.disabled`` - which is
 exactly what the previous 0.x manager did, so existing collections keep working.
 
-Files live in ``<mods>/<character>/`` where ``<character>`` is the full name
-(``凯茜娅-狂诗``).  That name is also the key used by the catalog and the art
-library, so one string identifies a character everywhere.
+Files live in ``<mods>/<english-character-id>/[<english-skin-id>/]``. The
+default skin stays at the character root. Database character keys remain
+compatible with earlier releases; naming.py handles the directory mapping.
 """
 
 from __future__ import annotations
 
 import os
 import shutil
+import tempfile
 from collections.abc import Callable, Collection, Iterable, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from .models import ARCHIVE_EXTENSIONS, DISABLED_SUFFIX, Mod, unique_in_order
+from .naming import SPECIAL_CATEGORIES, ascii_stem, character_for, folder_for
 from .settings import Settings
+from .skins import valid_skin
 from .store import Store
 
 PRIMARY_EXTENSIONS = (".pak", ".utoc")
@@ -78,7 +81,16 @@ class ModManager:
         name = character.strip()
         if name in {".", ".."} or any(c in name for c in '/\\:<>"|?*'):
             raise ValueError("invalid character folder")
-        return base / name if name else base
+        return base / folder_for(name) if name else base
+
+    def skin_dir(self, character: str, skin: str = "default") -> Path:
+        if not valid_skin(character, skin):
+            raise ValueError("invalid skin")
+        directory = self.character_dir(character)
+        if directory is None:
+            raise RuntimeError("mods directory is not configured")
+        # Default stays at the character root, preserving older flat collections.
+        return directory if skin == "default" else directory / skin
 
     def ensure_character_dir(self, character: str) -> Path:
         directory = self.character_dir(character)
@@ -194,6 +206,7 @@ class ModManager:
         sources: Sequence[Path],
         *,
         character: str,
+        skin: str = "default",
         name: str = "",
         author: str = "",
         source_url: str = "",
@@ -203,6 +216,40 @@ class ModManager:
     ) -> ImportResult:
         """Copy files/folders/archives into the mods directory and track them."""
         result = ImportResult()
+        # Keep staging alive until all discovered packages have been copied.
+        with tempfile.TemporaryDirectory(prefix="snowmm-import-") as staging:
+            from .archives import extract_packages
+
+            expanded = []
+            for index, source in enumerate(sources):
+                if source.suffix.lower() not in ARCHIVE_EXTENSIONS:
+                    expanded.append(source)
+                    continue
+                target = Path(staging) / str(index)
+                target.mkdir()
+                try:
+                    extract_packages(source, target)
+                    if not any(Path(_strip_disabled(p.name)).suffix.lower() in PRIMARY_EXTENSIONS
+                               for p in target.rglob("*") if p.is_file()):
+                        result.skipped.append(source.name)
+                    expanded.append(target)
+                except Exception as error:
+                    result.errors.append(f"{source.name}: {error}")
+            imported = self._import_files(
+                expanded, character=character, skin=skin, name=name, author=author,
+                source_url=source_url, note=note, preview=preview, progress=progress,
+            )
+            result.added.extend(imported.added)
+            result.errors.extend(imported.errors)
+            result.skipped.extend(imported.skipped)
+        return result
+
+    def _import_files(
+        self, sources: Sequence[Path], *, character: str, skin: str, name: str,
+        author: str, source_url: str, note: str, preview: str,
+        progress: Callable[[int, int, str], None] | None,
+    ) -> ImportResult:
+        result = ImportResult()
         if self.storage_dir is None:
             result.errors.append("storage-path-missing")
             return result
@@ -211,16 +258,14 @@ class ModManager:
             result.errors.append("character-missing")
             return result
         try:
-            target_dir = self.ensure_character_dir(character)
+            target_dir = self.skin_dir(character, skin)
+            target_dir.mkdir(parents=True, exist_ok=True)
         except (OSError, RuntimeError, ValueError) as error:
             result.errors.append(str(error))
             return result
         # Discover each package once, even when both its pak and utoc were selected.
         groups: dict[tuple[Path, str], list[Path]] = {}
         for source in sources:
-            if source.suffix.lower() in ARCHIVE_EXTENSIONS:
-                result.errors.append(f"archive import is disabled: {source.suffix.lower()}")
-                continue
             candidates = sorted(source.rglob("*")) if source.is_dir() else [source]
             for candidate in candidates:
                 bare = Path(_strip_disabled(candidate.name))
@@ -249,7 +294,7 @@ class ModManager:
                 progress(index, total, primary.name)
             copied: list[Path] = []
             try:
-                stem = self._package_stem(target_dir, Path(_strip_disabled(primary.name)).stem)
+                stem = self._package_stem(target_dir, ascii_stem(Path(_strip_disabled(primary.name)).stem))
                 for source in files:
                     bare = Path(_strip_disabled(source.name))
                     suffix = bare.suffix + (DISABLED_SUFFIX if source.name.endswith(DISABLED_SUFFIX) else "")
@@ -260,8 +305,10 @@ class ModManager:
                         shutil.copyfileobj(reader, writer)
                 destination_primary = self._pick_primary(copied)
                 mod = Mod(
-                    name=name or Path(_strip_disabled(primary.name)).stem,
+                    name=(f"{name} · {Path(_strip_disabled(primary.name)).stem}" if name and total > 1
+                          else name or Path(_strip_disabled(primary.name)).stem),
                     file=str(destination_primary), character=character, author=author,
+                    skin=skin,
                     source_url=source_url, note=note, preview=preview,
                 )
                 mod.file = str(mod.enabled_path)
@@ -343,7 +390,7 @@ class ModManager:
 
     def rename_stem(self, mod: Mod, new_stem: str) -> str | None:
         """Rename a complete package, keeping the record unchanged on failure."""
-        new_stem = new_stem.strip()
+        new_stem = ascii_stem(new_stem.strip())
         if not new_stem or new_stem == mod.enabled_path.stem:
             return None
         if new_stem in {".", ".."} or any(c in new_stem for c in '/\\:<>"|?*'):
@@ -371,17 +418,22 @@ class ModManager:
         """Where the mod's files end up once they are renamed to ``stem``."""
         return mod.enabled_path.with_name(f"{stem}{mod.enabled_path.suffix}")
 
-    def move_mod(self, mod: Mod, character: str) -> str | None:
+    def move_mod(self, mod: Mod, character: str, skin: str = "default") -> str | None:
         """Move a mod's files into another character's folder."""
         character = character.strip()
-        if not character or character == mod.character:
+        if not character:
             return None
         try:
-            target_dir = self.ensure_character_dir(character)
+            target_dir = self.skin_dir(character, skin)
+            if mod.directory == target_dir:
+                mod.character, mod.skin = character, skin
+                self.store.save()
+                return None
+            target_dir.mkdir(parents=True, exist_ok=True)
             files = self.siblings(mod)
             if not files:
                 return f"{mod.filename}: missing"
-            stem = self._package_stem(target_dir, mod.stem)
+            stem = self._package_stem(target_dir, ascii_stem(mod.stem))
             moves = []
             for path in files:
                 bare = Path(_strip_disabled(path.name))
@@ -396,6 +448,7 @@ class ModManager:
         source_dir = mod.directory
         mod.file = str(target_dir / f"{stem}{mod.extension}")
         mod.character = character
+        mod.skin = skin
         self._prune_empty(source_dir)
         self.store.save()
         return None
@@ -413,6 +466,49 @@ class ModManager:
         return mod.preview
 
     # ----------------------------------------------------------------- scan
+    def repair_legacy_layout(self, known_characters: Collection[str]) -> tuple[int, list[str]]:
+        from .compatibility import repair_layout
+
+        return repair_layout(self, known_characters)
+
+    def normalize_layout(self, known_characters: Collection[str]) -> tuple[int, list[str]]:
+        """Migrate managed packages to English paths; leave unrelated files alone.
+
+        A database snapshot is written first. Each package move is transactional
+        and collisions receive a fresh stem. Re-running only retries remaining work.
+        """
+        base = self.storage_dir
+        if base is None or not base.exists():
+            return 0, []
+        from datetime import datetime
+
+        self.store.save()
+        backup = self.store.path.with_name(f"data-before-english-{datetime.now():%Y%m%d-%H%M%S-%f}.json")
+        shutil.copy2(self.store.path, backup)
+        self.scan_storage(known_characters=known_characters)
+        changed, errors = 0, []
+        for mod in list(self.mods):
+            if mod.character not in known_characters or not mod.exists:
+                continue
+            if not mod.disk_path.resolve().is_relative_to(base.resolve()):
+                continue
+            try:
+                target = self.skin_dir(mod.character, mod.skin)
+                if mod.directory == target and mod.stem.isascii():
+                    continue
+                if mod.directory == target:
+                    stem = self._package_stem(target, ascii_stem(mod.stem))
+                    error = self.rename_stem(mod, stem)
+                else:
+                    error = self.move_mod(mod, mod.character, mod.skin)
+                if error:
+                    errors.append(f"{mod.filename}: {error}")
+                else:
+                    changed += 1
+            except (OSError, ValueError, RuntimeError) as error:
+                errors.append(str(error))
+        return changed, errors
+
     def scan_storage(
         self,
         progress: Callable[[int, int, str], None] | None = None,
@@ -428,10 +524,11 @@ class ModManager:
         if base is None or not base.exists():
             return []
         candidates: list[Path] = []
-        for root, _dirs, files in os.walk(base):
+        for root, dirs, files in os.walk(base):
+            dirs[:] = [name for name in dirs if not (Path(root) / name).is_symlink()]
             for name in files:
                 stripped = _strip_disabled(name)
-                if Path(stripped).suffix.lower() in PRIMARY_EXTENSIONS:
+                if Path(stripped).suffix.lower() in PRIMARY_EXTENSIONS and not (Path(root) / name).is_symlink():
                     candidates.append(Path(root) / name)
         known = {str(mod.enabled_path).lower() for mod in self.store.mods}
         adopted: list[Mod] = []
@@ -450,13 +547,14 @@ class ModManager:
             folders = list(relative.parts)[:-1]
             if not folders:
                 continue
-            character = folders[0]
+            character = character_for(folders[0])
             if known_characters is not None and character not in known_characters:
                 continue
             mod = Mod(
                 name=Path(_strip_disabled(path.name)).stem,
                 file=str(path),
                 character=character,
+                skin=folders[1] if len(folders) > 1 and valid_skin(character, folders[1]) else "default",
             )
             mod.enabled = not str(path).endswith(DISABLED_SUFFIX)
             mod.refresh_size()
@@ -476,7 +574,7 @@ class ModManager:
         invents a character of its own.
         """
         found: list[Issue] = []
-        groups: dict[str, list[Mod]] = {}
+        groups: dict[tuple[str, str], list[Mod]] = {}
         paths_seen: dict[str, Mod] = {}
         unknown: dict[str, list[Mod]] = {}
 
@@ -485,7 +583,7 @@ class ModManager:
                 found.append(Issue("missing_file", "error", {"file": mod.filename}, [mod.id]))
                 continue
             key = str(mod.enabled_path).lower()
-            if key in paths_seen:
+            if key in paths_seen and mod.character not in SPECIAL_CATEGORIES:
                 found.append(
                     Issue("duplicate_path", "warning", {"file": mod.filename}, [paths_seen[key].id, mod.id])
                 )
@@ -493,8 +591,8 @@ class ModManager:
                 paths_seen[key] = mod
             if known_characters is not None and mod.character not in known_characters:
                 unknown.setdefault(mod.character, []).append(mod)
-            if mod.enabled and mod.character:
-                groups.setdefault(mod.character, []).append(mod)
+            if mod.enabled and mod.character and mod.character not in SPECIAL_CATEGORIES:
+                groups.setdefault((mod.character, mod.skin), []).append(mod)
 
         for character, mods in sorted(unknown.items()):
             found.append(
@@ -506,7 +604,7 @@ class ModManager:
                 )
             )
 
-        for character, mods in groups.items():
+        for (character, _skin), mods in groups.items():
             if len(mods) > 1:
                 found.append(
                     Issue(

@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "snowmm"
-version = "1.0.0"
+version = "1.1.0"
 description = "A modern mod manager for Snowbreak: Containment Zone"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["PySide6>=6.6"]
+dependencies = ["PySide6>=6.6", "py7zr>=1.1,<2", "rarfile>=4.2,<5"]
 
 [project.urls]
-Repository = "https://github.com/theresa-2333/Snowbreak_Mod_Manager"
-Issues = "https://github.com/theresa-2333/Snowbreak_Mod_Manager/issues"
+Repository = "https://github.com/theresa-2333/SnowMM"
+Issues = "https://github.com/theresa-2333/SnowMM/issues"
 
 [tool.setuptools.packages.find]
 include = ["snowmm*"]
@@ -21,8 +21,6 @@ include = ["snowmm*"]
 snowmm = ["assets/**/*.png", "assets/**/*.ico", "assets/**/*.json", "assets/**/*.txt"]
 
 [project.optional-dependencies]
-# Archive import (.zip / .7z / .rar) is parked for now; when it returns it will
-# need py7zr / rarfile again - see docs/PLAN.md, roadmap item 1.
 dev = ["ruff>=0.6", "pyinstaller>=6.0", "build>=1.0", "pillow>=10.0"]
 
 [project.scripts]

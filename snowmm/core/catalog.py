@@ -10,9 +10,9 @@ The catalog is assembled from three sources, in increasing priority:
 3. the records the user edited inside the app, which annotate an existing entry
    but can never introduce a character of their own.
 
-A character's ``name`` is its full name, e.g. ``凯茜娅-狂诗``.  That is also the
-folder name inside the mods directory, so the catalog, the art library and the
-on-disk layout all share a single key.
+A character's ``name`` remains a stable display/database key. The bundled
+``folder`` annotation maps English asset and mod directories to this key.
+Two explicit utility categories are included alongside the portrait roster.
 """
 
 from __future__ import annotations
@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any
 
 from . import paths
+from .naming import ELEMENT_IDS, SPECIAL_CATEGORIES, character_for
 
 ELEMENT_ORDER = paths.ELEMENTS
 
@@ -47,6 +48,10 @@ class Character:
     role: str = ""
     portrait: str = ""
     user_defined: bool = False
+
+    @property
+    def special(self) -> bool:
+        return self.name in SPECIAL_CATEGORIES
 
     # ----------------------------------------------------------------- naming
     @property
@@ -127,7 +132,8 @@ def scan_art(root: Path) -> list[Character]:
         for image in sorted(folder.iterdir()):
             if image.suffix.lower() not in paths.IMAGE_SUFFIXES or image.stem == folder.name:
                 continue
-            found.append(Character(name=image.stem, element=folder.name, portrait=str(image)))
+            element = next((cn for cn, en in ELEMENT_IDS.items() if en == folder.name), folder.name)
+            found.append(Character(name=character_for(image.stem), element=element, portrait=str(image)))
     for image in sorted(item for item in root.iterdir() if item.is_file()):
         if image.suffix.lower() in paths.IMAGE_SUFFIXES:
             found.append(Character(name=image.stem, portrait=str(image)))
@@ -161,6 +167,9 @@ class Catalog:
             # record must never grow it.
             if character.name in catalog:
                 catalog.merge(character)
+        if art_dir is None or art_dir == paths.ART_DIR:
+            for name, english in SPECIAL_CATEGORIES.items():
+                catalog.merge(Character(name=name, name_en=english))
         return catalog
 
     def merge(self, character: Character) -> Character:
@@ -171,6 +180,8 @@ class Catalog:
             return character
         for field_name in ("name_en", "element", "role", "portrait"):
             value = getattr(character, field_name)
+            if field_name == "portrait" and value and not Path(value).is_file():
+                continue
             if value:
                 setattr(existing, field_name, value)
         existing.user_defined = existing.user_defined or character.user_defined

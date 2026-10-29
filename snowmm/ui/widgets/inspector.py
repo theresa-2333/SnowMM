@@ -24,7 +24,8 @@ from PySide6.QtWidgets import (
 from ...core import paths, shell
 from ...core.catalog import Catalog
 from ...core.models import Mod, human_size
-from ...i18n import character_name, tr
+from ...core.skins import skins_for
+from ...i18n import character_name, get_language, tr
 from .. import icons
 from ..imaging import ImageCache, save_clipboard_image
 from ..theme import Theme
@@ -44,6 +45,8 @@ class ModInspector(Card):
     preview_dropped = Signal(object, str)
     paste_failed = Signal()
     category_changed = Signal(object, str)  # move a mod to another character
+    skin_changed = Signal(object, str)
+    gallery_requested = Signal()
 
     def __init__(
         self,
@@ -144,12 +147,19 @@ class ModInspector(Card):
         choose_button.clicked.connect(self.choose_preview_file)
         paste_row.addWidget(self.paste_button)
         paste_row.addWidget(choose_button)
+        self.gallery_button = QPushButton(tr("button_enabled_gallery"))
+        self.gallery_button.clicked.connect(self._open_gallery)
+        paste_row.addWidget(self.gallery_button)
         layout.addLayout(paste_row)
 
         if self.show_character:
             self.character_combo = self._field_combo(layout, tr("label_full_name"))
             self.character_combo.setEditable(False)
             self.character_combo.activated.connect(self._commit_character)
+
+        self.skin_combo = self._field_combo(layout, tr("label_skin"))
+        self.skin_combo.setEditable(False)
+        self.skin_combo.activated.connect(self._commit_skin)
 
         self.name_edit = QLineEdit()
         self.name_edit.setPlaceholderText(tr("label_name"))
@@ -288,6 +298,12 @@ class ModInspector(Card):
         combo.blockSignals(False)
 
     def _load(self, mod: Mod) -> None:
+        self.skin_combo.blockSignals(True)
+        self.skin_combo.clear()
+        for skin in skins_for(mod.character):
+            self.skin_combo.addItem(skin.name_en if get_language() == "en_US" else skin.name, skin.id)
+        self.skin_combo.setCurrentIndex(max(0, self.skin_combo.findData(mod.skin)))
+        self.skin_combo.blockSignals(False)
         self.name_edit.blockSignals(True)
         self.author_edit.blockSignals(True)
         self.source_edit.blockSignals(True)
@@ -313,6 +329,10 @@ class ModInspector(Card):
             widget.blockSignals(False)
 
     # ---------------------------------------------------------------- commit
+    def _commit_skin(self, index: int) -> None:
+        if self.current and self.skin_combo.itemData(index) != self.current.skin:
+            self.skin_changed.emit(self.current, self.skin_combo.itemData(index))
+
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
         QTimer.singleShot(0, self._render_preview)
@@ -401,7 +421,8 @@ class ModInspector(Card):
                 return
             if self._preview_dialog is not None:
                 self._preview_dialog.close()
-            dialog = ImagePreviewDialog(pixmap, mod.name, self)
+            dialog = ImagePreviewDialog(pixmap, mod.name, self, gallery_available=True)
+            dialog.gallery_requested.connect(self._open_gallery)
             self._preview_dialog = dialog
             dialog.finished.connect(lambda _result: self._forget_preview(dialog))
             dialog.show()
@@ -409,6 +430,11 @@ class ModInspector(Card):
     def _forget_preview(self, dialog: ImagePreviewDialog) -> None:
         if self._preview_dialog is dialog:
             self._preview_dialog = None
+
+    def _open_gallery(self) -> None:
+        if self._preview_dialog is not None:
+            self._preview_dialog.close()
+        self.gallery_requested.emit()
 
     def _paste_from_clipboard(self) -> None:
         """Store a clipboard image as this mod's preview."""

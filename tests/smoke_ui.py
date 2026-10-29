@@ -78,7 +78,7 @@ def main() -> int:
     assert result.added, result.errors
     imported = result.added[0]
     assert imported.character == "里芙-狂猎"
-    assert imported.disk_path.parent.name == "里芙-狂猎", imported.disk_path
+    assert imported.disk_path.parent.name == "lyfe-wild-hunt", imported.disk_path
 
     # The (modal) dialogs are built directly so their payloads stay consistent.
     from snowmm.ui.dialogs import CharacterEditorDialog, ImportDialog

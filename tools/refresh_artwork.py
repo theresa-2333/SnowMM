@@ -15,6 +15,8 @@ from pathlib import Path
 
 from PIL import Image
 
+ELEMENT_IDS = {"高热": "thermal", "低温": "frost", "电击": "electrical", "动能": "kinetic", "特异": "chaos"}
+
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / ".work" / "release-assets"
 ASSETS = ROOT / "snowmm" / "assets"
@@ -65,7 +67,7 @@ def refresh(character, entries):
     image.load()
     if min(image.size) < 100:
         raise ValueError(f"{name}: invalid portrait dimensions {image.size}")
-    target = ASSETS / "characters" / character["element"] / f"{name}.png"
+    target = ASSETS / "characters" / ELEMENT_IDS[character["element"]] / f"{character['folder']}.png"
     image.save(target, optimize=True)
     return {"name": name, "file": target.relative_to(ASSETS).as_posix(),
             "source_page": source, "image_url": image_url,

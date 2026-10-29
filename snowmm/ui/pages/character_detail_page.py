@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
     QScrollArea,
     QSizePolicy,
     QSplitter,
+    QStackedWidget,
     QTabWidget,
     QTreeWidget,
     QTreeWidgetItem,
@@ -26,11 +27,13 @@ from PySide6.QtWidgets import (
 from ...core import shell
 from ...core.catalog import Character
 from ...core.models import Mod, human_size
-from ...i18n import armor_name, character_name, tr
+from ...core.skins import skins_for
+from ...i18n import armor_name, character_name, get_language, tr
 from .. import icons
 from ..widgets.cards import ROLE_KEYS, StatTile, icon_button, role_label
 from ..widgets.common import Card, EmptyState, FlowLayout
 from ..widgets.inspector import ModInspector
+from ..widgets.mod_gallery import ModGalleryWidget
 from ..widgets.table import ModTable
 from .base import Page
 
@@ -48,6 +51,7 @@ class CharacterDetailPage(Page):
     def __init__(self, ctx, parent: QWidget | None = None) -> None:
         super().__init__(ctx, parent)
         self.character_name = ""
+        self.selected_skin = "default"
         self._portrait_width = 0
         self.root.setContentsMargins(18, 14, 18, 18)
         self.root.addWidget(self._build_header())
@@ -62,7 +66,23 @@ class CharacterDetailPage(Page):
         self.splitter.setStretchFactor(0, 0)
         self.splitter.setStretchFactor(1, 1)
         self.splitter.setStretchFactor(2, 0)
-        self.root.addWidget(self.splitter, 1)
+        self.content_stack = QStackedWidget()
+        self.content_stack.addWidget(self.splitter)
+        self.gallery = ModGalleryWidget(ctx, self.content_stack)
+        self.gallery.changed.connect(self.changed.emit)
+        self.gallery.back_requested.connect(self.show_list)
+        self.inspector.gallery_requested.connect(self.show_gallery)
+        self.content_stack.addWidget(self.gallery)
+        self.root.addWidget(self.content_stack, 1)
+
+    def show_gallery(self) -> None:
+        self.gallery.reload()
+        self.content_stack.setCurrentWidget(self.gallery)
+        self.gallery.setFocus()
+
+    def show_list(self) -> None:
+        self.content_stack.setCurrentWidget(self.splitter)
+        self.refresh()
 
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
@@ -123,6 +143,8 @@ class CharacterDetailPage(Page):
         self.add_button = QPushButton(tr("button_add_mod"))
         self.add_button.setObjectName("Primary")
         self.add_button.clicked.connect(lambda: self.add_mod_requested.emit(self.character_name))
+        self.gallery_button = QPushButton(tr("button_enabled_gallery"))
+        self.gallery_button.clicked.connect(self.show_gallery)
         self.folder_import_button = QPushButton(tr("button_import_folder"))
         self.folder_import_button.clicked.connect(lambda: self.add_folder_requested.emit(self.character_name))
         self.enable_button = QPushButton(tr("button_enable_all"))
@@ -140,6 +162,7 @@ class CharacterDetailPage(Page):
         for button in (
             self.edit_button,
             self.add_button,
+            self.gallery_button,
             self.folder_import_button,
             self.enable_button,
             self.disable_button,
@@ -204,13 +227,22 @@ class CharacterDetailPage(Page):
         self.skin_combo.setMinimumContentsLength(8)
         self.skin_combo.activated.connect(self._on_armor_selected)
         layout.addWidget(self.skin_combo)
+
+        self.outfit_label = QLabel(tr("label_skin"))
+        self.outfit_label.setObjectName("Faint")
+        layout.addWidget(self.outfit_label)
+        self.outfit_combo = QComboBox()
+        self.outfit_combo.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToMinimumContentsLengthWithIcon)
+        self.outfit_combo.setMinimumContentsLength(8)
+        self.outfit_combo.currentIndexChanged.connect(self._on_skin_selected)
+        layout.addWidget(self.outfit_combo)
         self.skin_button = QPushButton(tr("button_enable_only"))
         self.skin_button.clicked.connect(self._enable_only_selection)
         layout.addWidget(self.skin_button)
 
         self.disable_character_button = QPushButton(tr("button_disable_character"))
         self.disable_character_button.setObjectName("Danger")
-        self.disable_character_button.clicked.connect(lambda: self._set_all(False))
+        self.disable_character_button.clicked.connect(lambda: self._set_all(False, whole_character=True))
         layout.addWidget(self.disable_character_button)
         layout.addStretch(1)
         scroll.setWidget(host)
@@ -278,6 +310,7 @@ class CharacterDetailPage(Page):
     def _build_right(self) -> QWidget:
         self.inspector = ModInspector(self.ctx.theme, self.ctx.images, self.ctx.catalog)
         self.inspector.changed.connect(self._on_mod_changed)
+        self.inspector.skin_changed.connect(self._move_skin)
         self.inspector.enable_toggled.connect(self._on_toggle_requested)
         self.inspector.delete_requested.connect(self._on_delete_requested)
         self.inspector.reveal_requested.connect(lambda mod: shell.reveal(mod.disk_path))
@@ -290,14 +323,19 @@ class CharacterDetailPage(Page):
 
     # ------------------------------------------------------------------- data
     def show_character(self, name: str) -> None:
+        if name != self.character_name:
+            self.selected_skin = "default"
+            self.content_stack.setCurrentWidget(self.splitter)
         self.character_name = name
         self.refresh()
 
     def refresh(self) -> None:
+        if hasattr(self, "gallery"):
+            self.gallery.refresh()
         if not self.character_name:
             return
         character = self.ctx.catalog.get(self.character_name) or self.ctx.catalog.ensure(self.character_name)
-        mods = self.ctx.character_mods(self.character_name)
+        mods = self._current_mods()
         enabled = [mod for mod in mods if mod.enabled]
 
         subtitle = role_label(character.subtitle) if character.subtitle in ROLE_KEYS else character.subtitle
@@ -313,6 +351,19 @@ class CharacterDetailPage(Page):
         self.count_label.setText(tr("label_enabled_of", enabled=len(enabled), total=len(mods)))
 
         self._fill_armor_combo(character)
+        self.outfit_combo.blockSignals(True)
+        self.outfit_combo.clear()
+        for skin in skins_for(character.name):
+            label = skin.name_en if get_language() == "en_US" else skin.name
+            self.outfit_combo.addItem(label, skin.id)
+        self.outfit_combo.setCurrentIndex(max(0, self.outfit_combo.findData(self.selected_skin)))
+        self.outfit_combo.blockSignals(False)
+        self.outfit_label.setText(tr("label_skin"))
+        self.outfit_combo.setToolTip(self.outfit_combo.currentText())
+        for widget in (self.outfit_label, self.outfit_combo, self.skin_label, self.skin_combo,
+                       self.skin_button, self.tile_armors):
+            widget.setVisible(not character.special)
+        self.edit_button.setVisible(not character.special)
         self.table.set_mods(mods)
         self.empty_state.setVisible(not mods)
         self.table.setVisible(bool(mods))
@@ -347,15 +398,32 @@ class CharacterDetailPage(Page):
         if name and name != self.character_name:
             self.navigate_requested.emit(str(name))
 
+    def _on_skin_selected(self, index: int) -> None:
+        self.selected_skin = self.outfit_combo.itemData(index) or "default"
+        self.refresh()
+
+    def _move_skin(self, mod: Mod, skin: str) -> None:
+        error = self.ctx.manager.move_mod(mod, self.character_name, skin)
+        if error:
+            self.ctx.toast and self.ctx.toast.show_message(error, "warning")
+        self.changed.emit()
+        self.refresh()
+
     def _fill_folder_tree(self) -> None:
         self.folder_tree.clear()
-        directory = self.ctx.manager.character_dir(self.character_name)
+        if self.ctx.manager.storage_dir is None:
+            return
+        directory = self.ctx.manager.skin_dir(self.character_name, self.selected_skin)
         if directory is None or not directory.exists():
             return
         for child in sorted(directory.rglob("*")):
             if child.is_dir():
                 continue
             relative = child.relative_to(directory)
+            skin_folders = {skin.id for skin in skins_for(self.character_name) if skin.id != "default"}
+            if (self.selected_skin == "default" and len(relative.parts) > 1
+                    and relative.parts[0] in skin_folders):
+                continue
             parent_item = None
             for part in relative.parts[:-1]:
                 found = None
@@ -395,10 +463,11 @@ class CharacterDetailPage(Page):
 
     # ---------------------------------------------------------------- actions
     def _current_mods(self) -> list[Mod]:
-        return self.ctx.character_mods(self.character_name)
+        return [mod for mod in self.ctx.character_mods(self.character_name) if mod.skin == self.selected_skin]
 
-    def _set_all(self, enabled: bool) -> None:
-        changed, errors = self.ctx.manager.set_character_enabled(self.character_name, enabled)
+    def _set_all(self, enabled: bool, *, whole_character: bool = False) -> None:
+        mods = self.ctx.character_mods(self.character_name) if whole_character else self._current_mods()
+        changed, errors = self.ctx.manager.set_enabled(mods, enabled)
         self.changed.emit()
         self.refresh()
         self.ctx.toast and self.ctx.toast.show_message(
@@ -462,6 +531,7 @@ class CharacterDetailPage(Page):
 
     def _on_mod_changed(self, mod: Mod) -> None:
         self.ctx.store.save()
+        self.table.update_mod(mod)
 
     def _on_preview_requested(self, mod: Mod) -> None:
         path, _ = QFileDialog.getOpenFileName(

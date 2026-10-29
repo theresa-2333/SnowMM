@@ -106,6 +106,20 @@ class ModTable(QTableWidget):
     def mod_rows(self) -> list[Mod]:
         return list(self._mods)
 
+    def update_mod(self, mod: Mod) -> None:
+        """Reflect metadata edits without resetting selection or editor focus."""
+        previous = self.blockSignals(True)
+        try:
+            for row, existing in enumerate(self._mods):
+                if existing.id != mod.id:
+                    continue
+                for column, key in enumerate(self.columns):
+                    item = self.item(row, column)
+                    if key != "enabled" and item is not None:
+                        item.setText(self._text_for(mod, key))
+        finally:
+            self.blockSignals(previous)
+
     def _fill_row(self, row: int, mod: Mod) -> None:
         for column, key in enumerate(self.columns):
             if key == "enabled":

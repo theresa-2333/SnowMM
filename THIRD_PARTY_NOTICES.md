@@ -46,3 +46,16 @@ https://pyinstaller.org/en/stable/license.html
 
 JASM is credited as interface inspiration; no JASM application code is bundled.
 https://github.com/Kiyanami/JASM
+
+## Skin names and archive libraries
+
+Skin names and their English labels are transcribed from BWIKI's outfit index;
+the source URL and retrieval date are recorded in `assets/catalog/skins.json`.
+No outfit images or descriptive text are copied.
+https://wiki.biligame.com/sonw/时装一览
+
+Archive support uses py7zr (LGPL-2.1-or-later) and rarfile (ISC), together with
+their dependencies. RAR decompressor executables are detected on the user's
+machine; no WinRAR / UnRAR / 7-Zip executable is redistributed in this repository.
+https://github.com/miurahr/py7zr
+https://github.com/markokr/rarfile

@@ -12,7 +12,7 @@ from typing import Any
 from . import paths
 from .models import Mod
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 
 
 class Store:

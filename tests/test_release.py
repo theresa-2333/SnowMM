@@ -16,7 +16,8 @@ class ReleaseAssetsTests(unittest.TestCase):
     def test_every_portrait_has_a_verified_source_and_digest(self):
         manifest = json.loads(paths.asset("catalog", "artwork.json").read_text(encoding="utf-8"))
         entries = manifest["portraits"]
-        self.assertEqual({entry["name"] for entry in entries}, set(Catalog.load().names()))
+        self.assertEqual({entry["name"] for entry in entries},
+                         {item.name for item in Catalog.load() if not item.special})
         self.assertEqual(len(entries), 54)
         for entry in entries:
             asset = paths.ASSETS_DIR / entry["file"]

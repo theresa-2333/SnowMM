@@ -4,11 +4,15 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUTPUT = ROOT / "dist" / "release"
+sys.path.insert(0, str(ROOT))
+from snowmm import __version__
+
+OUTPUT = ROOT / "dist" / "release" / __version__
 
 
 def check_assets(bundle: zipfile.ZipFile, prefix: str):
@@ -18,6 +22,9 @@ def check_assets(bundle: zipfile.ZipFile, prefix: str):
         assert hashlib.sha256(bundle.read(prefix + entry["file"])).hexdigest() == entry["sha256"]
     names = json.loads(bundle.read(prefix + "catalog/characters.json"))
     assert len(names) == 54 and all(item.get("name_en") for item in names)
+    skins = json.loads(bundle.read(prefix + "catalog/skins.json"))
+    assert len(skins["skins"]) == 116
+    assert all(name.isascii() for name in bundle.namelist())
     assert prefix + "icons/app.ico" in bundle.namelist()
     assert prefix + "licenses/LGPL-3.0.txt" in bundle.namelist()
 

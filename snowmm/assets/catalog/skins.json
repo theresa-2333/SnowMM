@@ -1,0 +1,820 @@
+{
+  "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88",
+  "retrieved": "2026-10-27",
+  "scope": "BWIKI outfit index, existing bundled roster only",
+  "unmatched_characters": [],
+  "skins": [
+    {
+      "character": "猫汐尔-猫猫",
+      "id": "echoes-of-souls",
+      "name": "魂灵缚痕",
+      "name_en": "Echoes of Souls",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-小太阳",
+      "id": "fiery-defense",
+      "name": "炽热御护",
+      "name_en": "Fiery Defense",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-星期三",
+      "id": "interstellar-voyager",
+      "name": "星宇巡游",
+      "name_en": "Interstellar Voyager",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-养生专家",
+      "id": "work-goal",
+      "name": "工作宗旨",
+      "name_en": "Work Goal",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-黄金狮子",
+      "id": "delusional-starlet",
+      "name": "妄想新星",
+      "name_en": "Delusional Starlet",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "安卡希雅-辉夜",
+      "id": "dimensional-memory",
+      "name": "次元追忆",
+      "name_en": "Dimensional Memory",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-狂猎",
+      "id": "nightfall-scarlet",
+      "name": "宵宴绯盏",
+      "name_en": "Nightfall Scarlet",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-云篆",
+      "id": "crimsontip-crane",
+      "name": "丹翎野鹤",
+      "name_en": "Crimsontip Crane",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-缄默",
+      "id": "nimble-hare",
+      "name": "行疾脱兔",
+      "name_en": "Nimble Hare",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-咎冠",
+      "id": "stinging-rose",
+      "name": "蜂刺蔷薇",
+      "name_en": "Stinging Rose",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "晴-藏锋",
+      "id": "frostbite-flora",
+      "name": "凛冽冬花",
+      "name_en": "Frostbite Flora",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-冬至",
+      "id": "sparkling-swell",
+      "name": "粼粼尾浪",
+      "name_en": "Sparkling Swell",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "猫汐尔-溯影",
+      "id": "sizzling-holiday",
+      "name": "灼阳假期",
+      "name_en": "Sizzling Holiday",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-云篆",
+      "id": "wavecrest-glimmer",
+      "name": "波光倩影",
+      "name_en": "Wavecrest Glimmer",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-姐姐大人",
+      "id": "sultry-sunshine",
+      "name": "情迷炎日",
+      "name_en": "Sultry Sunshine",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-养生专家",
+      "id": "enduring-valor",
+      "name": "不灭残辉",
+      "name_en": "Enduring Valor",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "茉莉安-雨燕",
+      "id": "high-roller",
+      "name": "一掷千金",
+      "name_en": "High Roller",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-狂猎",
+      "id": "ice-dancer",
+      "name": "霜舞盛典",
+      "name_en": "Ice Dancer",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-冬至",
+      "id": "snowridge-sledding",
+      "name": "雪岭焰行",
+      "name_en": "Snowridge Sledding",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "苔丝-魔术师",
+      "id": "merry-in-exile",
+      "name": "流放欢愉",
+      "name_en": "Merry-in-Exile",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-咎冠",
+      "id": "slopestyle-diva",
+      "name": "初晴金雪",
+      "name_en": "Slopestyle Diva",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-蓝闪",
+      "id": "graceful-danseuse",
+      "name": "远曲独舞",
+      "name_en": "Graceful Danseuse",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-缄默",
+      "id": "symphony-of-frenzy",
+      "name": "狂曲雅跃",
+      "name_en": "Symphony of Frenzy",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "晴-藏锋",
+      "id": "covert-zephyr",
+      "name": "循风谍舞",
+      "name_en": "Covert Zephyr",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "安卡希雅-辉夜",
+      "id": "allure-of-lotus",
+      "name": "东流映荷",
+      "name_en": "Allure of Lotus",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-黄金狮子",
+      "id": "indomitable-charm",
+      "name": "不灭傲姿",
+      "name_en": "Indomitable Charm",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "伊切尔-豹豹",
+      "id": "overdue-radiance",
+      "name": "迟到花蕾",
+      "name_en": "Overdue Radiance",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-狂猎",
+      "id": "street-code",
+      "name": "街头规则",
+      "name_en": "Street Code",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-咎冠",
+      "id": "sugar-queen",
+      "name": "甜蜜统治",
+      "name_en": "Sugar Queen",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-羽蜕",
+      "id": "kiss-be-the-remedy",
+      "name": "轻语疗法",
+      "name_en": "Kiss Be the Remedy",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "琴诺-悖谬",
+      "id": "apprentice-maid",
+      "name": "见习侍奉",
+      "name_en": "Apprentice Maid",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "苔丝-魔术师",
+      "id": "secret-date",
+      "name": "秘密约会",
+      "name_en": "Secret Date",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "瑟瑞斯-瞬刻",
+      "id": "flutter-of-ecstasy",
+      "name": "须臾蹁跹",
+      "name_en": "Flutter of Ecstasy",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-蓝闪",
+      "id": "private-secretary",
+      "name": "贴身特助",
+      "name_en": "Private Secretary",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "猫汐尔-溯影",
+      "id": "feline-grace",
+      "name": "喵步巧跃",
+      "name_en": "Feline Grace",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-小太阳",
+      "id": "unfading-glow",
+      "name": "不灭耀心",
+      "name_en": "Unfading Glow",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-辉耀",
+      "id": "flourish-of-heart",
+      "name": "绽于恋时",
+      "name_en": "Flourish of Heart",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "茉莉安-雨燕",
+      "id": "midnight-rose",
+      "name": "绯染夜幕",
+      "name_en": "Midnight Rose",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "伊切尔-豹豹",
+      "id": "fluffy-ollie",
+      "name": "绒绒漫步",
+      "name_en": "Fluffy Ollie",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-无限之视",
+      "id": "frozen-in-love",
+      "name": "爱意凝晶",
+      "name_en": "Frozen in Love",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-星期三",
+      "id": "devoted-voyager",
+      "name": "归航一心",
+      "name_en": "Devoted Voyager",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "薇蒂雅-龙舌兰",
+      "id": "plumed-beauty",
+      "name": "翠翎倩姿",
+      "name_en": "Plumed Beauty",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-云篆",
+      "id": "inkstroke-dragoness",
+      "name": "点墨化龙",
+      "name_en": "Inkstroke Dragoness",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "安卡希雅-不予显示",
+      "id": "unbeatable-rank",
+      "name": "不灭榜首",
+      "name_en": "Unbeatable Rank",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "琴诺-悖谬",
+      "id": "tidal-whispers",
+      "name": "静聆潮韵",
+      "name_en": "Tidal Whispers",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "茉莉安-幽潮",
+      "id": "radiant-sunkiss",
+      "name": "灿阳一刻",
+      "name_en": "Radiant Sunkiss",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-羽蜕",
+      "id": "seacove-serenity",
+      "name": "浅憩之处",
+      "name_en": "Seacove Serenity",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-朝翼",
+      "id": "surfside-leisure",
+      "name": "沐浪倦姿",
+      "name_en": "Surfside Leisure",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-驰掣",
+      "id": "plush-party",
+      "name": "毛绒派对",
+      "name_en": "Plush Party",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "瑟瑞斯-瞬刻",
+      "id": "underwater-hues",
+      "name": "斑斓水色",
+      "name_en": "Underwater Hues",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-羽蜕",
+      "id": "exclusive-trainer",
+      "name": "专属教练",
+      "name_en": "Exclusive Trainer",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-观测者",
+      "id": "eternal-watch",
+      "name": "不灭守望",
+      "name_en": "Eternal Watch",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-小太阳",
+      "id": "leafy-secret",
+      "name": "青叶密裹",
+      "name_en": "Leafy Secret",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-朝翼",
+      "id": "special-surprise",
+      "name": "秘密彩蛋",
+      "name_en": "Special Surprise",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "琴诺-悖谬",
+      "id": "dual-tranquility",
+      "name": "清荷雅弈",
+      "name_en": "Dual Tranquility",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "伊切尔-豹豹",
+      "id": "prowl-and-pounce",
+      "name": "捕猎演习",
+      "name_en": "Prowl and Pounce",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-蓝闪",
+      "id": "flicker-of-charm",
+      "name": "幽闪魅踪",
+      "name_en": "Flicker of Charm",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-辉耀",
+      "id": "lucky-lioness",
+      "name": "金狮舞瑞",
+      "name_en": "Lucky Lioness",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "瑟瑞斯-瞬刻",
+      "id": "creamy-delight",
+      "name": "纯白午后",
+      "name_en": "Creamy Delight",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-黄金狮子",
+      "id": "dazzling-roar",
+      "name": "璀夜华彩",
+      "name_en": "Dazzling Roar",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-琼弦",
+      "id": "rouge-bliss",
+      "name": "欣描红妆",
+      "name_en": "Rouge Bliss",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-夜天光",
+      "id": "tender-temptation",
+      "name": "暖夜情醺",
+      "name_en": "Tender Temptation",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-驰掣",
+      "id": "strawberry-sweet",
+      "name": "草莓甜心",
+      "name_en": "Strawberry Sweet",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "薇蒂雅-龙舌兰",
+      "id": "dance-by-firelight",
+      "name": "舞夜与焰",
+      "name_en": "Dance by Firelight",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "茉莉安-幽潮",
+      "id": "bunny-fantasy",
+      "name": "绒尾迷梦",
+      "name_en": "Bunny Fantasy",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-澜风",
+      "id": "pure-devotion",
+      "name": "望云清咏",
+      "name_en": "Pure Devotion",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-星期三",
+      "id": "unbreakable-silver",
+      "name": "不灭银星",
+      "name_en": "Unbreakable Silver",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-朝翼",
+      "id": "classy-elegance",
+      "name": "绮锦流韵",
+      "name_en": "Classy Elegance",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-辉耀",
+      "id": "nitro-nova",
+      "name": "疾速耀星",
+      "name_en": "Nitro Nova",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "妮塔-悸响",
+      "id": "sylvan-spirit",
+      "name": "林间潋滟",
+      "name_en": "Sylvan Spirit",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-冬至",
+      "id": "tidy-marksmaid",
+      "name": "暧馨侍奉",
+      "name_en": "Tidy Marksmaid",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "奈莉德-冥河代理人",
+      "id": "dawn-s-command",
+      "name": "晨曦统令",
+      "name_en": "Dawn's Command",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "卜卜-小天师",
+      "id": "vitality-checkup",
+      "name": "元气愈养",
+      "name_en": "Vitality Checkup",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-驰掣",
+      "id": "pool-patrol",
+      "name": "泳池护卫",
+      "name_en": "Pool Patrol",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-琼弦",
+      "id": "full-bloom",
+      "name": "慵倚花阴",
+      "name_en": "Full Bloom",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "里芙-无限之视",
+      "id": "ride-the-breeze",
+      "name": "引风飒意",
+      "name_en": "Ride the Breeze",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "薇蒂雅-天鹅座",
+      "id": "flight-of-fantasy",
+      "name": "云端之邀",
+      "name_en": "Flight of Fantasy",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "瑟瑞斯-小金鱼",
+      "id": "persistent-memory",
+      "name": "不灭恒忆",
+      "name_en": "Persistent Memory",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-澜风",
+      "id": "intimate-maid",
+      "name": "秘密侍奉",
+      "name_en": "Intimate Maid",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "卜卜-小天师",
+      "id": "fizzy-revelry",
+      "name": "畅饮狂欢",
+      "name_en": "Fizzy Revelry",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "茉莉安-幽潮",
+      "id": "fashion-dilemma",
+      "name": "甜蜜困扰",
+      "name_en": "Fashion Dilemma",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-小太阳",
+      "id": "fiery-burst",
+      "name": "炽灼迸裂",
+      "name_en": "Fiery Burst",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-狂诗",
+      "id": "starlove-vow",
+      "name": "星抚恋音",
+      "name_en": "Starlove Vow",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "苔丝-绮幻",
+      "id": "phantasia",
+      "name": "恋如花舞",
+      "name_en": "Phantasia",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "卜卜-小天师",
+      "id": "drizzle-gossamer",
+      "name": "雨沁轻衫",
+      "name_en": "Drizzle Gossamer",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "妮塔-悸响",
+      "id": "silken-dance",
+      "name": "轻罗曼舞",
+      "name_en": "Silken Dance",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "克罗瑞娜-绯月",
+      "id": "moonbeam-angel",
+      "name": "皎月幽祈",
+      "name_en": "Moonbeam Angel",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-夜天光",
+      "id": "vigilant-dawn",
+      "name": "共待曙明",
+      "name_en": "Vigilant Dawn",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "猫汐尔-猫猫",
+      "id": "undying-spirit",
+      "name": "不灭灵影",
+      "name_en": "Undying Spirit",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "瑟瑞斯-悠游",
+      "id": "azure-drift",
+      "name": "碧波浮游",
+      "name_en": "Azure Drift",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "奈莉德-冥河代理人",
+      "id": "sunspray-surge",
+      "name": "热沙激浪",
+      "name_en": "Sunspray Surge",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "薇蒂雅-天鹅座",
+      "id": "aqua-mirage",
+      "name": "海境鲛梦",
+      "name_en": "Aqua Mirage",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "辰星-琼弦",
+      "id": "tender-agenda",
+      "name": "柔倚身畔",
+      "name_en": "Tender Agenda",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-澄意",
+      "id": "sunset-sweet",
+      "name": "夕晖蜜约",
+      "name_en": "Sunset Sweet",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "安卡希雅-不予显示",
+      "id": "idle-cooldown",
+      "name": "叶荫闲趣",
+      "name_en": "Idle Cooldown",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "凯茜娅-狂诗",
+      "id": "floral-flutter",
+      "name": "花间蝶踪",
+      "name_en": "Floral Flutter",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "晴-霆光",
+      "id": "purelight-wishes",
+      "name": "清光虔愿",
+      "name_en": "Purelight Wishes",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "米娅-星彩",
+      "id": "midnight-heist",
+      "name": "暗空魅影",
+      "name_en": "Midnight Heist",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-夜天光",
+      "id": "gaze-of-lace",
+      "name": "暖雾凝眸",
+      "name_en": "Gaze of Lace",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-澄意",
+      "id": "jingle-of-joy",
+      "name": "颂夜欢歌",
+      "name_en": "Jingle of Joy",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "卜卜-灵鉴",
+      "id": "heartspell-magic",
+      "name": "绮恋星灵",
+      "name_en": "Heartspell Magic",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-澜风",
+      "id": "fall-for-you",
+      "name": "恋恋秋行",
+      "name_en": "Fall for You",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "猫汐尔-莲驱",
+      "id": "purrfect-prayer",
+      "name": "喵语祈念",
+      "name_en": "Purrfect Prayer",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "晴-旧日王牌",
+      "id": "immortal-blade",
+      "name": "不灭锋铭",
+      "name_en": "Immortal Blade",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "瑟瑞斯-悠游",
+      "id": "silkfin-embrace",
+      "name": "霄倾君怀",
+      "name_en": "Silkfin Embrace",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "安卡希雅-时之重奏",
+      "id": "echo-of-denstiny",
+      "name": "缘音回响",
+      "name_en": "Echo of Denstiny",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "茉莉安-霄鹰",
+      "id": "purelove-plumage",
+      "name": "纯白恋羽",
+      "name_en": "Purelove Plumage",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "米娅-星彩",
+      "id": "frolic-of-cloud",
+      "name": "祥云徜戏",
+      "name_en": "Frolic of Cloud",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "肴-养生专家",
+      "id": "life-goal",
+      "name": "生活宗旨",
+      "name_en": "Life Goal",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "奈莉德-冥河代理人",
+      "id": "carefree-charm",
+      "name": "游闲心舒",
+      "name_en": "Carefree Charm",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-澄意",
+      "id": "silky-slumber",
+      "name": "轻纱暖寐",
+      "name_en": "Silky Slumber",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "胧嫣-瑞狐",
+      "id": "lustrous-pearls",
+      "name": "珠光曳影",
+      "name_en": "Lustrous Pearls",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芙提雅-炬芯",
+      "id": "empress-robe",
+      "name": "国主驾到",
+      "name_en": "Empress Robe",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "晴-霆光",
+      "id": "celestial-edge",
+      "name": "剑意逍遥",
+      "name_en": "Celestial Edge",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "恩雅-姐姐大人",
+      "id": "unceasing-care",
+      "name": "不灭柔情",
+      "name_en": "Unceasing Care",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    },
+    {
+      "character": "芬妮-辉耀",
+      "id": "defiant-blaze",
+      "name": "破焰傲绽",
+      "name_en": "Defiant Blaze",
+      "source": "https://wiki.biligame.com/sonw/%E6%97%B6%E8%A3%85%E4%B8%80%E8%A7%88"
+    }
+  ]
+}

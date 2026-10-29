@@ -179,6 +179,8 @@ class CharactersPage(Page):
                 card.clicked.connect(self._on_card_clicked)
                 card.favorite_toggled.connect(self._on_favorite)
                 self._cards[character.name] = card
+            else:
+                card.set_character(character)
             card.update_state(
                 mods=mods,
                 enabled=enabled,
