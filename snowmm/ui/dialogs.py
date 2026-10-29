@@ -24,7 +24,8 @@ from PySide6.QtWidgets import (
 
 from ..core import paths
 from ..core.catalog import Character
-from ..i18n import character_name, element_name, tr
+from ..core.skins import skins_for
+from ..i18n import character_name, element_name, get_language, tr
 from .context import AppContext
 from .imaging import save_clipboard_image
 
@@ -93,13 +94,19 @@ class ImportDialog(QDialog):
         form.setLabelAlignment(Qt.AlignmentFlag.AlignRight)
         form.setSpacing(8)
 
-        single_file = len(self.sources) == 1 and self.sources[0].is_file()
+        single_file = (len(self.sources) == 1 and self.sources[0].is_file()
+                       and self.sources[0].suffix.lower() not in {".zip", ".7z", ".rar"})
         self.name_edit = QLineEdit(self.sources[0].stem if single_file else "")
-        self.name_edit.setEnabled(single_file)
+        self.name_edit.setPlaceholderText(tr("import_name_hint"))
         self.author_edit = QLineEdit()
         self.source_edit = QLineEdit()
         self.note_edit = QTextEdit()
         self.note_edit.setFixedHeight(64)
+
+        self.skin_combo = QComboBox()
+        for skin in skins_for(character):
+            self.skin_combo.addItem(skin.name_en if get_language() == "en_US" else skin.name, skin.id)
+        form.addRow(tr("label_skin"), self.skin_combo)
 
         form.addRow(tr("label_name"), self.name_edit)
         form.addRow(tr("label_author"), self.author_edit)
@@ -150,6 +157,7 @@ class ImportDialog(QDialog):
     def values(self) -> dict[str, str]:
         return {
             "name": self.name_edit.text().strip(),
+            "skin": self.skin_combo.currentData() or "default",
             "author": self.author_edit.text().strip(),
             "source_url": self.source_edit.text().strip(),
             "note": self.note_edit.toPlainText().strip(),
@@ -160,8 +168,8 @@ class ImportDialog(QDialog):
 class CharacterEditorDialog(QDialog):
     """Edit the metadata of a bundled character.
 
-    The full name doubles as the folder name inside the mods directory, so it is
-    the one field that stays locked once a character exists.
+    The full name is a stable database key mapped to an English directory, so
+    it stays locked once a character exists.
     """
 
     def __init__(self, ctx: AppContext, character: Character | None = None, parent: QWidget | None = None) -> None:

@@ -197,6 +197,10 @@ class CharacterCard(QFrame):
         self.hide()
 
     # ------------------------------------------------------------------ state
+    def set_character(self, character: Character) -> None:
+        self.character = character
+        self.portrait.setPixmap(self.images.portrait(character, self.portrait.size(), 12))
+
     def update_state(self, *, mods: int, enabled: int, favorite: bool) -> None:
         self.mod_tag.setText(f"{enabled}/{mods}" if mods else "0")
         if mods and enabled:

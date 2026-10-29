@@ -8,6 +8,6 @@ future front-ends.
 
 __all__ = ["APP_NAME", "APP_TITLE", "__version__"]
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 APP_NAME = "SnowMM"
 APP_TITLE = "SnowMM - Snowbreak Mod Manager"

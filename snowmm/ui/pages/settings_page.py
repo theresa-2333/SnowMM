@@ -183,7 +183,9 @@ class SettingsPage(Page):
         flatten = QPushButton(tr("button_flatten"))
         flatten.setToolTip(tr("settings_flatten_hint"))
         flatten.clicked.connect(self._flatten)
-        for widget in (open_data, rescan, backup, migrate_button, flatten):
+        normalize = QPushButton(tr("button_normalize"))
+        normalize.clicked.connect(self._normalize)
+        for widget in (open_data, rescan, backup, migrate_button, flatten, normalize):
             row.addWidget(widget)
         layout.addLayout(row)
         return card
@@ -232,6 +234,9 @@ class SettingsPage(Page):
             return
         self.ctx.settings.storage_path = text
         self.ctx.settings.save()
+        _changed, errors = self.ctx.manager.repair_legacy_layout(self.ctx.known_characters())
+        if errors:
+            self.ctx.toast and self.ctx.toast.show_message(errors[0], "warning")
         self.paths_changed.emit()
 
     def _apply_game(self) -> None:
@@ -255,9 +260,22 @@ class SettingsPage(Page):
         self.paths_changed.emit()
 
     def _rescan(self) -> None:
+        _changed, errors = self.ctx.manager.repair_legacy_layout(self.ctx.known_characters())
         adopted = self.ctx.manager.scan_storage(known_characters=self.ctx.known_characters())
         message = tr("toast_scan_done", count=len(adopted)) if adopted else tr("toast_scan_none")
-        self.ctx.toast and self.ctx.toast.show_message(message)
+        if self.ctx.toast:
+            self.ctx.toast.show_message(errors[0] if errors else message, "warning" if errors else "check")
+        self.paths_changed.emit()
+
+    def _normalize(self) -> None:
+        try:
+            changed, errors = self.ctx.manager.repair_legacy_layout(self.ctx.known_characters())
+        except OSError as error:
+            changed, errors = 0, [str(error)]
+        message = tr("toast_normalized", count=changed)
+        if errors:
+            message += f" - {errors[0]}"
+        self.ctx.toast and self.ctx.toast.show_message(message, "warning" if errors else "check")
         self.paths_changed.emit()
 
     def _backup(self) -> None:
@@ -286,7 +304,7 @@ class SettingsPage(Page):
         if directory is None:
             self.ctx.toast and self.ctx.toast.show_message(tr("warning_storage_missing_desc"), "warning")
             return
-        moved, warnings = migrate.flatten_layout(directory, store=self.ctx.store)
+        moved, warnings = self.ctx.manager.repair_legacy_layout(self.ctx.known_characters())
         message = tr("toast_flattened", count=moved) if moved else tr("toast_flatten_none")
         if warnings and len(warnings) <= 3:
             message = f"{message} - {'; '.join(warnings)}"

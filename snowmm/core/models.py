@@ -36,9 +36,9 @@ class Mod:
     name: str = ""
     file: str = ""
     id: str = field(default_factory=lambda: new_id("mod_"))
-    #: Full character name such as ``凯茜娅-狂诗``.  It is the folder name on
-    #: disk and the key the catalog and the art library are built on.
+    #: Stable character key such as ``凯茜娅-狂诗``; naming.py maps it to disk.
     character: str = ""
+    skin: str = "default"
     author: str = ""
     source_url: str = ""
     note: str = ""
@@ -123,6 +123,7 @@ class Mod:
             "name": self.name,
             "file": self.file,
             "character": self.character,
+            "skin": self.skin,
             "author": self.author,
             "source_url": self.source_url,
             "note": self.note,
@@ -147,6 +148,7 @@ class Mod:
             name=str(raw.get("name") or Path(raw_file).stem),
             file=raw_file,
             character=character,
+            skin=str(raw.get("skin") or "default"),
             author=str(raw.get("author") or ""),
             source_url=str(raw.get("source_url") or raw.get("url") or ""),
             note=str(raw.get("note") or ""),

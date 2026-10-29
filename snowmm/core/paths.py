@@ -12,7 +12,7 @@ PACKAGE_DIR = Path(__file__).resolve().parent.parent
 ASSETS_DIR = PACKAGE_DIR / "assets"
 ELEMENTS_DIR = ASSETS_DIR / "elements"
 
-#: Bundled character art library: ``<art>/<element>/<character>.png``.  It is the
+#: Bundled character art library: ``<art>/<english-element>/<english-id>.png``. It is the
 #: single source of truth for which characters exist (54 of them), so it always
 #: ships inside the package and is never user configurable.
 ART_DIR = ASSETS_DIR / "characters"
@@ -66,8 +66,10 @@ def resolve_art_dir() -> Path:
 
 def element_icon(element: str) -> Path | None:
     """Bundled 40x40 damage-type icon, if the element is known."""
+    from .naming import ELEMENT_IDS
+
     for suffix in IMAGE_SUFFIXES:
-        candidate = ELEMENTS_DIR / f"{element}{suffix}"
+        candidate = ELEMENTS_DIR / f"{ELEMENT_IDS.get(element, element)}{suffix}"
         if candidate.exists():
             return candidate
     return None

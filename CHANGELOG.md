@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.1.0 — 2026-10-29
+
+- Automatically detect and repair legacy Chinese flat and character/armor/skin layouts
+  on startup, directory selection, scan and F5 refresh, with pre-migration database snapshots.
+  Preserve metadata and enable state, keep companion packages together, and avoid overwrites.
+- Embed the enabled-mod gallery in both All Mods and character details with a Back button.
+  Gallery shortcuts apply only while the gallery has focus.
+
+- Fix missing covers when stored portrait paths predate the English asset layout;
+  refresh reused cards when portrait sources change.
+- Restore enable states from disk before startup rendering.
+- Allow names for archive/folder imports and update table labels immediately after metadata edits.
+- Enabled-mod gallery from the preview panel, full-image viewer and all-mods toolbar;
+  per-card toggles, arrow navigation and Space shortcuts, with disabled cards kept until refresh.
+
+- Default skin for every armor and 116 offline, bilingual outfits sourced from BWIKI.
+  Character details filter mods by skin; imports and inspector moves persist skin assignments.
+- English character/element assets and managed mod paths, stable ASCII package names,
+  and a Settings migration with a database snapshot, collision handling and package rollback.
+- ZIP, 7z and RAR imports discover nested pak/utoc packages and their companions in temporary staging.
+  Reject unsafe paths and links before extraction; enforce archive entry and expanded-size limits.
+- Base and Miscellaneous cards skip multi-enabled and duplicate-record checks.
+  Character conflicts now compare mods within the same armor and skin.
+- Added core and UI regressions. Nexus Mods integration evaluated separately; no online feature implemented.
+
 ## 1.0.0 — 2026-10-19
 
 Major update from the 0.2.x single-file PyQt5 application.

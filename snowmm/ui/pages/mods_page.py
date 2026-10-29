@@ -11,7 +11,9 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QMessageBox,
+    QPushButton,
     QSplitter,
+    QStackedWidget,
     QVBoxLayout,
     QWidget,
 )
@@ -21,6 +23,7 @@ from ...core.models import Mod
 from ...i18n import character_name, tr
 from ..widgets.common import EmptyState
 from ..widgets.inspector import ModInspector
+from ..widgets.mod_gallery import ModGalleryWidget
 from ..widgets.table import ModTable
 from .base import Page
 
@@ -62,19 +65,36 @@ class ModsPage(Page):
         table_layout.addWidget(self.empty)
 
         self.inspector = ModInspector(self.ctx.theme, self.ctx.images, self.ctx.catalog, show_character=True)
-        self.inspector.changed.connect(lambda mod: self.ctx.store.save())
+        self.inspector.changed.connect(self._on_mod_changed)
         self.inspector.enable_toggled.connect(self._on_toggle)
         self.inspector.delete_requested.connect(self._on_delete)
         self.inspector.reveal_requested.connect(lambda mod: shell.reveal(mod.disk_path))
         self.inspector.preview_requested.connect(self._choose_preview)
         self.inspector.preview_dropped.connect(self._on_preview)
         self.inspector.category_changed.connect(self._on_category_changed)
+        self.inspector.skin_changed.connect(lambda mod, skin: self._on_category_changed(mod, mod.character, skin))
 
         splitter.addWidget(table_host)
         splitter.addWidget(self.inspector)
         splitter.setStretchFactor(0, 1)
         splitter.setStretchFactor(1, 0)
-        self.root.addWidget(splitter, 1)
+        self.content_stack = QStackedWidget()
+        self.content_stack.addWidget(splitter)
+        self.gallery = ModGalleryWidget(ctx, self.content_stack)
+        self.gallery.changed.connect(self.changed.emit)
+        self.gallery.back_requested.connect(self.show_list)
+        self.inspector.gallery_requested.connect(self.show_gallery)
+        self.content_stack.addWidget(self.gallery)
+        self.root.addWidget(self.content_stack, 1)
+
+    def show_gallery(self) -> None:
+        self.gallery.reload()
+        self.content_stack.setCurrentWidget(self.gallery)
+        self.gallery.setFocus()
+
+    def show_list(self) -> None:
+        self.content_stack.setCurrentWidget(self.splitter)
+        self.refresh()
 
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
@@ -107,10 +127,17 @@ class ModsPage(Page):
 
         layout.addWidget(self.character_combo)
         layout.addWidget(self.status_combo)
+        gallery = QPushButton(tr("button_enabled_gallery"))
+        gallery.clicked.connect(self.show_gallery)
+        layout.addWidget(gallery)
         layout.addStretch(1)
         return layout
 
     # ------------------------------------------------------------------ events
+    def _on_mod_changed(self, mod: Mod) -> None:
+        self.ctx.store.save()
+        self.table.update_mod(mod)
+
     def _on_character_changed(self, _index: int) -> None:
         self._character = self.character_combo.currentData() or ""
         self.refresh()
@@ -184,8 +211,8 @@ class ModsPage(Page):
         self.ctx.store.save()
         self.refresh()
 
-    def _on_category_changed(self, mod: Mod, character: str) -> None:
-        error = self.ctx.manager.move_mod(mod, character)
+    def _on_category_changed(self, mod: Mod, character: str, skin: str = "default") -> None:
+        error = self.ctx.manager.move_mod(mod, character, skin)
         if error:
             self.ctx.toast and self.ctx.toast.show_message(error, "warning")
             return
@@ -198,6 +225,8 @@ class ModsPage(Page):
         self.refresh()
 
     def refresh(self) -> None:
+        if hasattr(self, "gallery"):
+            self.gallery.refresh()
         names = self.ctx.characters()
         self.character_combo.blockSignals(True)
         current = self.character_combo.currentData()

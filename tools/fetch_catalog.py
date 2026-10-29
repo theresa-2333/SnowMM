@@ -39,6 +39,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from snowmm.core import paths  # noqa: E402
+from snowmm.core.naming import folder_for  # noqa: E402
 
 WIKI_BASE = "https://wiki.biligame.com/sonw/"
 USER_AGENT = (
@@ -136,7 +137,7 @@ def main() -> int:
     for index, name in enumerate(names, start=1):
         portrait = roster.entries.get(name, "")
         if portrait and not arguments.no_images:
-            target = art_root / f"{name}.png"
+            target = art_root / f"{folder_for(name.replace('·', '-'))}.png"
             if not target.exists():
                 try:
                     target.write_bytes(fetch(portrait))

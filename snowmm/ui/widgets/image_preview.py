@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, Signal
 from PySide6.QtGui import QPainter, QPixmap
 from PySide6.QtWidgets import (
     QDialog,
@@ -56,7 +56,9 @@ class ImageView(QGraphicsView):
 
 
 class ImagePreviewDialog(QDialog):
-    def __init__(self, pixmap: QPixmap, title: str, parent=None) -> None:
+    gallery_requested = Signal()
+
+    def __init__(self, pixmap: QPixmap, title: str, parent=None, *, gallery_available: bool = False) -> None:
         super().__init__(parent)
         self.setWindowTitle(f"{tr('label_preview')} · {title}")
         self.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
@@ -69,6 +71,10 @@ class ImagePreviewDialog(QDialog):
         self.view = ImageView(pixmap, self)
         layout.addWidget(self.view, 1)
         controls = QHBoxLayout()
+        if gallery_available:
+            self.gallery_button = QPushButton(tr("button_enabled_gallery"))
+            self.gallery_button.clicked.connect(self.gallery_requested.emit)
+            controls.addWidget(self.gallery_button)
         for label, action in (
             ("−", lambda: self.view.zoom(0.8)),
             ("+", lambda: self.view.zoom(1.25)),

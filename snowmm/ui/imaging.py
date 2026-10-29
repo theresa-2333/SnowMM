@@ -23,6 +23,7 @@ from PySide6.QtGui import (
 from ..core import paths
 from ..core.catalog import Character
 from ..core.models import Mod
+from ..core.naming import ELEMENT_IDS, folder_for
 from ..i18n import armor_name, character_name, get_language
 
 IMAGE_SUFFIXES = (".png", ".jpg", ".jpeg", ".webp", ".bmp")
@@ -144,7 +145,7 @@ class ImageCache:
             return None
         target = Path(path)
         try:
-            stamp = int(target.stat().st_mtime)
+            stamp = target.stat().st_mtime_ns
         except OSError:
             return None
         key = (str(target), stamp)
@@ -161,6 +162,12 @@ class ImageCache:
         """Resolve a portrait file: catalog path first, then the user cache."""
         if character.portrait and Path(character.portrait).exists():
             return character.portrait
+        # User annotations from before the English-path migration can contain
+        # stale absolute portrait paths. Fall back to the shipped artwork.
+        element = ELEMENT_IDS.get(character.element, character.element)
+        bundled = paths.ART_DIR / element / f"{folder_for(character.name)}.png"
+        if bundled.is_file():
+            return str(bundled)
         for suffix in IMAGE_SUFFIXES:
             candidate = paths.PORTRAIT_DIR / f"{character.slug}{suffix}"
             if candidate.exists():
@@ -173,11 +180,13 @@ class ImageCache:
         return pixmap
 
     def portrait(self, character: Character, size: QSize, radius: int = 12) -> QPixmap:
-        key = (f"portrait:{get_language()}:{character.name}", size.width(), radius)
+        path = self.portrait_path(character)
+        stamp = Path(path).stat().st_mtime_ns if path and Path(path).is_file() else 0
+        key = (f"portrait:{get_language()}:{character.name}:{path}:{stamp}:{size.height()}", size.width(), radius)
         cached = self._derived.get(key)
         if cached is not None:
             return cached
-        source = self._load(self.portrait_path(character))
+        source = self._load(path)
         if source is None:
             return self._remember(key, placeholder(character_name(character.name, character.name_en), size, self.dark))
         if source.hasAlphaChannel():

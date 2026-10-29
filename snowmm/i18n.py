@@ -353,11 +353,38 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
 
 _current = DEFAULT_LANGUAGE
 
+TRANSLATIONS["zh_CN"].update({
+    "import_name_hint": "可选名称；留空使用包文件名",
+    "button_enabled_gallery": "已启用模组画廊",
+    "gallery_hint": "点击预览选择模组；← / → 切换，空格键快捷开关。关闭的模组保留在本次画廊中，方便重新启用。",
+    "gallery_empty": "当前没有已启用的模组。",
+    "gallery_count": "本次画廊 {total} 个 · 当前启用 {enabled} 个",
+    "label_skin": "皮肤",
+    "issue_multi_enabled_desc": "同一装甲、同一皮肤下的多个模组可能互相覆盖，建议只启用一个。",
+    "issue_multi_enabled": "{character} 的同一皮肤启用了 {count} 个模组",
+    "button_normalize": "转换为英文目录与文件名",
+    "toast_normalized": "已转换 {count} 个模组",
+})
+TRANSLATIONS["en_US"].update({
+    "import_name_hint": "Optional name; leave empty to use package filenames",
+    "button_enabled_gallery": "Enabled mods gallery",
+    "gallery_hint": "Click a preview to select. ← / → navigate; Space toggles. Disabled items stay here until refresh.",
+    "gallery_empty": "No mods are currently enabled.",
+    "gallery_count": "{total} in this gallery · {enabled} enabled",
+    "label_skin": "Skin",
+    "issue_multi_enabled_desc": "Mods for the same armor and skin may overwrite each other; keep only one enabled.",
+    "issue_multi_enabled": "{count} mods enabled for one skin of {character}",
+    "button_normalize": "Convert to English paths and filenames",
+    "toast_normalized": "Converted {count} mod(s)",
+})
+
 
 @lru_cache(maxsize=1)
 def _character_names() -> dict[str, str]:
     data = json.loads(paths.asset("catalog", "characters.json").read_text(encoding="utf-8"))
-    return {item["name"]: item.get("name_en", "") for item in data}
+    from .core.naming import SPECIAL_CATEGORIES
+
+    return {**{item["name"]: item.get("name_en", "") for item in data}, **SPECIAL_CATEGORIES}
 
 
 def character_name(name: str, name_en: str = "") -> str:
