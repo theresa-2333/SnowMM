@@ -13,3 +13,21 @@ dist/
 .work/
 .build-deps/
 .release-test/
+
+# Enhanced runtime and local-only content
+data/
+Library/
+verification/
+.release-extra/
+.test-temp/
+.ui-test/
+.upstream-test/
+.codex-backups/
+repair-engine/
+repair-runtime/
+*.pak
+*.utoc
+*.ucas
+*.sig
+.env
+.env.*

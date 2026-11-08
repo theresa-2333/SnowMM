@@ -59,3 +59,21 @@ their dependencies. RAR decompressor executables are detected on the user's
 machine; no WinRAR / UnRAR / 7-Zip executable is redistributed in this repository.
 https://github.com/miurahr/py7zr
 https://github.com/markokr/rarfile
+
+## Enhanced contribution (source only)
+
+Based on SnowMM v1.1.0, commit bd7371bf8d95545d668c62cb005ac495bbc0121a.
+This contribution is not an official upstream release and declares no new license
+for upstream code or artwork. Existing attribution and rights are unchanged.
+
+The optional repair adapter invokes separately obtained Mod Repair Tool 1050.
+No repair scripts, repak executable, rule databases, Python runtime, game files,
+mods or fonts are included in this contribution. Users obtain and configure
+external tools themselves under their applicable terms.
+https://www.nexusmods.com/snowbreakcontainmentzone/mods/1050
+
+Feature references only (no source or assets copied):
+https://www.nexusmods.com/snowbreakcontainmentzone/mods/983
+https://www.nexusmods.com/snowbreakcontainmentzone/mods/1006
+https://github.com/eggao/SnowBreak-MOD-manager
+https://d3dxskinmanage.numlinka.com/

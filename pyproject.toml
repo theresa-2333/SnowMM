@@ -21,15 +21,17 @@ include = ["snowmm*"]
 snowmm = ["assets/**/*.png", "assets/**/*.ico", "assets/**/*.json", "assets/**/*.txt"]
 
 [project.optional-dependencies]
+enhanced = ["psutil>=7,<8"]
 dev = ["ruff>=0.6", "pyinstaller>=6.0", "build>=1.0", "pillow>=10.0"]
 
 [project.scripts]
 snowmm = "snowmm.app:main"
+snowmm-enhanced = "snowmm.enhanced.app:main"
 
 [tool.ruff]
 line-length = 120
 target-version = "py310"
-extend-exclude = ["snow_mod_manager", ".preview", "build", "dist", ".build-deps", ".work", ".release-test"]
+extend-exclude = ["snow_mod_manager", ".preview", "build", "dist", ".build-deps", ".work", ".release-test", ".release-extra", ".test-temp", ".ui-test", ".upstream-test", "verification"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "SIM"]

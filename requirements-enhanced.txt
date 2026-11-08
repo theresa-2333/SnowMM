@@ -1,0 +1,4 @@
+PySide6==6.12.0
+py7zr==1.1.4
+rarfile==4.5
+psutil==7.2.2
